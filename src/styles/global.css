@@ -1,0 +1,217 @@
+:root {
+  --color-primary: #003865;
+  --color-primary-light: #00568a;
+  --color-accent: #f5a623;
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-border: #cccccc;
+  --color-error: #d32f2f;
+  --color-success: #2e7d32;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* App shell: content area fills the screen, tab bar pinned to bottom */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.page-header {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
+  padding: 12px 16px 8px;
+  margin: 0;
+}
+
+.page-body {
+  padding: 16px 24px 24px;
+  overflow: auto;
+}
+
+/* Bottom tab bar */
+.tab-bar {
+  display: flex;
+  border-top: 2px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.tab-button {
+  flex: 1;
+  min-height: 64px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px;
+}
+
+.tab-button.active {
+  color: var(--color-primary);
+}
+
+.tab-button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: -3px;
+}
+
+.tab-icon {
+  font-size: 24px;
+}
+
+/* Form controls (large touch targets, high contrast) */
+label {
+  display: block;
+  font-weight: 600;
+  margin: 16px 0 4px;
+}
+
+select,
+.btn {
+  width: 100%;
+  min-height: 48px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 2px solid var(--color-border);
+  padding: 8px 12px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.btn {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--color-primary-light);
+}
+
+.btn:disabled {
+  background: var(--color-border);
+  cursor: not-allowed;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  min-height: 48px;
+}
+
+.checkbox-row input {
+  width: 24px;
+  height: 24px;
+}
+
+/* Route result */
+.result-box {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.result-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-success);
+  margin: 0 0 8px;
+}
+
+.result-distance {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.result-step {
+  padding: 4px 0;
+}
+
+.error-text {
+  color: var(--color-error);
+  font-weight: 600;
+}
+
+.map-preview {
+  height: 320px;
+  margin-top: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+/* Settings */
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.setting-label {
+  font-weight: 500;
+}
+
+.switch {
+  width: 28px;
+  height: 28px;
+}
+
+.app-info {
+  margin-top: 32px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.app-info p {
+  margin: 4px 0;
+}
