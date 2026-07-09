@@ -1,0 +1,2 @@
+entrance_id,building,accessible,door_type,step_free,lat,lng,indoor_handover_id,notes
+EXAMPLE_main_e1,Main Building (Gilbert Scott),yes,automatic,yes,55.871700,-4.288700,MB-E1,Delete this example row. Automatic door on east side; small ramp.
