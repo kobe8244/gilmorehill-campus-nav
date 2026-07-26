@@ -6,7 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "survey:fetch": "node scripts/fetch-osm.mjs",
+    "survey:build": "node scripts/build-survey.mjs",
+    "survey:plan": "node scripts/field-plan.mjs",
+    "survey:check": "node scripts/check-survey.mjs",
+    "survey": "npm run survey:fetch && npm run survey:build && npm run survey:plan",
+    "survey:import": "node scripts/build-survey.mjs"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.20.3",

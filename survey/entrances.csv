@@ -1,2 +1,21 @@
-entrance_id,building,accessible,door_type,step_free,lat,lng,indoor_handover_id,notes
-EXAMPLE_main_e1,Main Building (Gilbert Scott),yes,automatic,yes,55.871700,-4.288700,MB-E1,Delete this example row. Automatic door on east side; small ramp.
+entrance_id,building,serves,accessible,door_type,step_free,step_count,ramp,door_width_m,lat,lng,nearest_node_id,indoor_handover_id,osm_hint,notes
+main_building_4374873296,Main Building,main_building,,,,,,,55.870986,-4.288003,n236,,entrance=yes; level=1,
+main_building_4374873349,Main Building,main_building,,,,,,,55.871683,-4.289711,n343,,entrance=yes; level=1,
+main_building_4374873352,Main Building,main_building,,,,,,,55.871870,-4.288521,n190,,entrance=yes; level=0,
+main_building_4374873355,Main Building,main_building,,,,,,,55.871931,-4.289312,n339,,entrance=yes; level=0,
+james_watt_south_5171378847,James Watt Building (South),james_watt_south,,,,,,,55.870895,-4.286847,n28,,entrance=yes,
+main_building_5179610537,Main Building,main_building,,,,,,,55.871044,-4.288658,n346,,entrance=yes; level=1,
+main_building_5179610553,Main Building,main_building,,,,,,,55.871159,-4.289298,n231,,entrance=yes; level=1,
+university_library_7993589849,University Library,university_library,,,,,,,55.873060,-4.288750,n42,,entrance=yes,
+university_library_7993589850,University Library,university_library,,,,,,,55.873334,-4.288416,n43,,entrance=yes,
+main_building_11938383690,Main Building,main_building,,,,,,,55.871724,-4.289694,n340,,"entrance=yes; level=0; note=Entrace is simplified, it is actually tucked under the staircase.",
+main_building_11938383691,Main Building,main_building,,,,,,,55.871543,-4.289768,n342,,entrance=yes; level=1,
+main_building_11938383718,Main Building,main_building,,,,,,,55.871815,-4.288125,n110,,entrance=yes; level=0,
+university_library_7993589854,University Library,university_library,,,,,,,55.873278,-4.288261,n43,,entrance=yes,
+university_library_7993589855,University Library,university_library,,,,,,,55.873087,-4.288314,n107,,entrance=yes,
+main_building_7993590301,Main Building,main_building,,,,,,,55.871835,-4.289343,n339,,entrance=yes; level=1,
+main_building_11938383694,Main Building,main_building,,,,,,,55.871605,-4.288428,n349,,entrance=yes; level=1,
+main_building_11938383695,Main Building,main_building,,,,,,,55.871286,-4.288558,n345,,entrance=yes; level=1,
+main_building_11938383697,Main Building,main_building,,,,,,,55.871273,-4.289246,n337,,entrance=yes; level=1,
+hunterian_museum_11938383704,Hunterian Museum,hunterian_museum,no,,,,,,55.871671,-4.288185,n347,,access=yes; entrance=yes; level=1; wheelchair=no,
+hunterian_museum_11938383713,Hunterian Museum,hunterian_museum,no,,,,,,55.871724,-4.288579,n350,,access=yes; entrance=yes; level=1; wheelchair=no,

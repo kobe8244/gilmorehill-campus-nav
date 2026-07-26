@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import { campusGraph } from "../data/campusGraph";
+import { campusGraph, destinations } from "../data/campusGraph";
+import { assess } from "../navigation/accessibility";
+import type { Route } from "../navigation/pathfinding";
 import { Colors } from "../constants/theme";
 
-// University of Glasgow, Gilmorehill campus centre
-const GLASGOW_UNI = { lat: 55.8721, lng: -4.2882 };
+// Centre of the four-destination study area.
+const STUDY_AREA_CENTRE = { lat: 55.8723, lng: -4.2878 };
 
 const containerStyle: React.CSSProperties = { width: "100%", height: "100%" };
 
@@ -12,68 +14,108 @@ const containerStyle: React.CSSProperties = { width: "100%", height: "100%" };
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY ?? "";
 
 interface CampusMapProps {
-  // Ordered list of node IDs forming an active route to draw (optional)
-  routeNodeIds?: string[];
+  /** Active route to draw, if any. */
+  route?: Route | null;
+  /** Draw the surveyed network faintly behind the route. */
+  showNetwork?: boolean;
 }
 
-export default function CampusMap({ routeNodeIds = [] }: CampusMapProps) {
+export default function CampusMap({ route = null, showNetwork = true }: CampusMapProps) {
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
 
-  // Hold the live map instance so we can draw the route imperatively
+  // Hold the live map instance so the route can be drawn imperatively.
   const [map, setMap] = useState<google.maps.Map | null>(null);
-  const polylineRef = useRef<google.maps.Polyline | null>(null);
+  const routeLinesRef = useRef<google.maps.Polyline[]>([]);
+  const networkLinesRef = useRef<google.maps.Polyline[]>([]);
 
-  const onMapLoad = useCallback((instance: google.maps.Map) => {
-    setMap(instance);
-  }, []);
+  const onMapLoad = useCallback((instance: google.maps.Map) => setMap(instance), []);
+  const onMapUnmount = useCallback(() => setMap(null), []);
 
-  const onMapUnmount = useCallback(() => {
-    setMap(null);
-  }, []);
+  // The surveyed network, drawn faintly so the user can see which ground the
+  // app actually has data for — and, by omission, which it does not.
+  useEffect(() => {
+    if (!map) return;
+    networkLinesRef.current.forEach((l) => l.setMap(null));
+    networkLinesRef.current = [];
 
-  // Draw (or clear) the route line whenever the map or the route changes.
+    if (showNetwork) {
+      for (const edge of campusGraph.edges) {
+        networkLinesRef.current.push(
+          new google.maps.Polyline({
+            path: edge.coords.map(([lng, lat]) => ({ lat, lng })),
+            strokeColor: Colors.border,
+            strokeOpacity: 0.85,
+            strokeWeight: 3,
+            map,
+          })
+        );
+      }
+    }
+
+    return () => {
+      networkLinesRef.current.forEach((l) => l.setMap(null));
+      networkLinesRef.current = [];
+    };
+  }, [map, showNetwork]);
+
+  // Draw (or clear) the route whenever the map or the route changes.
   // Drawing directly on the map instance is more reliable than the
   // declarative <Polyline> component under React StrictMode re-mounts.
   useEffect(() => {
     if (!map) return;
+    routeLinesRef.current.forEach((l) => l.setMap(null));
+    routeLinesRef.current = [];
 
-    // Remove any previously drawn route
-    if (polylineRef.current) {
-      polylineRef.current.setMap(null);
-      polylineRef.current = null;
+    if (!route || route.edges.length === 0) return;
+
+    const bounds = new google.maps.LatLngBounds();
+
+    // One polyline per segment rather than one for the whole route, so a
+    // segment nobody has surveyed can be drawn differently from one that
+    // has been checked. The route is only as trustworthy as its worst part.
+    for (const edge of route.edges) {
+      const path = edge.coords.map(([lng, lat]) => ({ lat, lng }));
+      path.forEach((p) => bounds.extend(p));
+
+      const { verified } = assess(edge);
+      routeLinesRef.current.push(
+        new google.maps.Polyline({
+          path,
+          strokeColor: Colors.accent,
+          strokeOpacity: verified ? 0.95 : 0,
+          strokeWeight: 7,
+          map,
+          // A dashed line reads as provisional, which is exactly what an
+          // unsurveyed segment is.
+          icons: verified
+            ? undefined
+            : [
+                {
+                  icon: {
+                    path: "M 0,-1 0,1",
+                    strokeOpacity: 0.95,
+                    strokeColor: Colors.accent,
+                    strokeWeight: 7,
+                    scale: 3,
+                  },
+                  offset: "0",
+                  repeat: "14px",
+                },
+              ],
+        })
+      );
     }
 
-    // Convert node IDs into coordinates
-    const coords = routeNodeIds
-      .map((id) => campusGraph.nodes.find((n) => n.id === id))
-      .filter((n): n is NonNullable<typeof n> => n != null)
-      .map((n) => ({ lat: n.lat, lng: n.lng }));
-
-    if (coords.length > 1) {
-      polylineRef.current = new google.maps.Polyline({
-        path: coords,
-        strokeColor: Colors.accent,
-        strokeOpacity: 0.9,
-        strokeWeight: 6,
-        map,
-      });
-
-      // Zoom/pan the map so the whole route is visible
-      const bounds = new google.maps.LatLngBounds();
-      coords.forEach((c) => bounds.extend(c));
-      map.fitBounds(bounds, 64);
-    }
+    map.fitBounds(bounds, 72);
 
     return () => {
-      if (polylineRef.current) {
-        polylineRef.current.setMap(null);
-        polylineRef.current = null;
-      }
+      routeLinesRef.current.forEach((l) => l.setMap(null));
+      routeLinesRef.current = [];
     };
-  }, [map, routeNodeIds]);
+  }, [map, route]);
 
   if (loadError) {
     return (
@@ -91,16 +133,20 @@ export default function CampusMap({ routeNodeIds = [] }: CampusMapProps) {
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={GLASGOW_UNI}
-      zoom={16}
+      center={STUDY_AREA_CENTRE}
+      zoom={17}
       onLoad={onMapLoad}
       onUnmount={onMapUnmount}
     >
-      {campusGraph.nodes.map((node) => (
+      {destinations.map((d) => (
         <Marker
-          key={node.id}
-          position={{ lat: node.lat, lng: node.lng }}
-          title={node.name}
+          key={d.id}
+          position={{ lat: d.lat, lng: d.lng }}
+          title={
+            d.insideOf
+              ? `${d.name} — inside the Main Building; route ends at its entrance`
+              : d.name
+          }
         />
       ))}
     </GoogleMap>

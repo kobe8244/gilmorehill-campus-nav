@@ -1,0 +1,55 @@
+{
+  "journeys": [
+    {
+      "from": "Main Building",
+      "to": "Hunterian Museum",
+      "metres": 90,
+      "stepFreeMetres": null,
+      "detourM": null
+    },
+    {
+      "from": "Main Building",
+      "to": "University Library",
+      "metres": 183,
+      "stepFreeMetres": 183,
+      "detourM": 0
+    },
+    {
+      "from": "Main Building",
+      "to": "James Watt Building (South)",
+      "metres": 352,
+      "stepFreeMetres": 352,
+      "detourM": 0
+    },
+    {
+      "from": "Hunterian Museum",
+      "to": "University Library",
+      "metres": 192,
+      "stepFreeMetres": null,
+      "detourM": null
+    },
+    {
+      "from": "Hunterian Museum",
+      "to": "James Watt Building (South)",
+      "metres": 340,
+      "stepFreeMetres": null,
+      "detourM": null
+    },
+    {
+      "from": "University Library",
+      "to": "James Watt Building (South)",
+      "metres": 454,
+      "stepFreeMetres": 454,
+      "detourM": 0
+    }
+  ],
+  "coreCount": 16,
+  "altCount": 41,
+  "linkCount": 11,
+  "coreLen": 581,
+  "altLen": 1243,
+  "linkLen": 327,
+  "droppedUnreachable": [
+    "s123"
+  ]
+}

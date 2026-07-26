@@ -1,0 +1,3264 @@
+{
+  "generated": "2026-07-26T03:24:07.977Z",
+  "attribution": "Base path geometry © OpenStreetMap contributors, ODbL. Accessibility attributes surveyed on site.",
+  "destinations": [
+    {
+      "id": "main_building",
+      "name": "Main Building",
+      "lat": 55.871605,
+      "lng": -4.288428,
+      "nodeId": "n349",
+      "insideOf": null
+    },
+    {
+      "id": "hunterian_museum",
+      "name": "Hunterian Museum",
+      "lat": 55.871671,
+      "lng": -4.288185,
+      "nodeId": "n347",
+      "insideOf": "main_building"
+    },
+    {
+      "id": "university_library",
+      "name": "University Library",
+      "lat": 55.87306,
+      "lng": -4.28875,
+      "nodeId": "n42",
+      "insideOf": null
+    },
+    {
+      "id": "james_watt_south",
+      "name": "James Watt Building (South)",
+      "lat": 55.870895,
+      "lng": -4.286847,
+      "nodeId": "n28",
+      "insideOf": null
+    }
+  ],
+  "nodes": [
+    {
+      "id": "n12",
+      "lat": 55.869999,
+      "lng": -4.286525
+    },
+    {
+      "id": "n13",
+      "lat": 55.8703,
+      "lng": -4.286587
+    },
+    {
+      "id": "n25",
+      "lat": 55.870892,
+      "lng": -4.288731
+    },
+    {
+      "id": "n26",
+      "lat": 55.870806,
+      "lng": -4.288076
+    },
+    {
+      "id": "n27",
+      "lat": 55.870714,
+      "lng": -4.287359
+    },
+    {
+      "id": "n28",
+      "lat": 55.870682,
+      "lng": -4.286828
+    },
+    {
+      "id": "n40",
+      "lat": 55.872465,
+      "lng": -4.289026
+    },
+    {
+      "id": "n41",
+      "lat": 55.872846,
+      "lng": -4.288776
+    },
+    {
+      "id": "n42",
+      "lat": 55.873116,
+      "lng": -4.288576
+    },
+    {
+      "id": "n43",
+      "lat": 55.873416,
+      "lng": -4.288368
+    },
+    {
+      "id": "n46",
+      "lat": 55.871782,
+      "lng": -4.285783
+    },
+    {
+      "id": "n47",
+      "lat": 55.871897,
+      "lng": -4.288151
+    },
+    {
+      "id": "n48",
+      "lat": 55.871937,
+      "lng": -4.288431
+    },
+    {
+      "id": "n6",
+      "lat": 55.872052,
+      "lng": -4.289247
+    },
+    {
+      "id": "n52",
+      "lat": 55.87204,
+      "lng": -4.285612
+    },
+    {
+      "id": "n99",
+      "lat": 55.873874,
+      "lng": -4.288812
+    },
+    {
+      "id": "n101",
+      "lat": 55.873628,
+      "lng": -4.28868
+    },
+    {
+      "id": "n102",
+      "lat": 55.873529,
+      "lng": -4.288283
+    },
+    {
+      "id": "n103",
+      "lat": 55.873084,
+      "lng": -4.289888
+    },
+    {
+      "id": "n105",
+      "lat": 55.872326,
+      "lng": -4.288129
+    },
+    {
+      "id": "n106",
+      "lat": 55.872524,
+      "lng": -4.288095
+    },
+    {
+      "id": "n107",
+      "lat": 55.873056,
+      "lng": -4.28835
+    },
+    {
+      "id": "n108",
+      "lat": 55.872196,
+      "lng": -4.288173
+    },
+    {
+      "id": "n109",
+      "lat": 55.872062,
+      "lng": -4.288079
+    },
+    {
+      "id": "n110",
+      "lat": 55.871816,
+      "lng": -4.288125
+    },
+    {
+      "id": "n149",
+      "lat": 55.873025,
+      "lng": -4.288117
+    },
+    {
+      "id": "n152",
+      "lat": 55.873002,
+      "lng": -4.287952
+    },
+    {
+      "id": "n153",
+      "lat": 55.872987,
+      "lng": -4.287841
+    },
+    {
+      "id": "n154",
+      "lat": 55.872908,
+      "lng": -4.287299
+    },
+    {
+      "id": "n156",
+      "lat": 55.872857,
+      "lng": -4.287738
+    },
+    {
+      "id": "n5",
+      "lat": 55.869999,
+      "lng": -4.286319
+    },
+    {
+      "id": "n189",
+      "lat": 55.872102,
+      "lng": -4.288363
+    },
+    {
+      "id": "n190",
+      "lat": 55.87187,
+      "lng": -4.288521
+    },
+    {
+      "id": "n208",
+      "lat": 55.872404,
+      "lng": -4.289069
+    },
+    {
+      "id": "n228",
+      "lat": 55.870829,
+      "lng": -4.288068
+    },
+    {
+      "id": "n231",
+      "lat": 55.871159,
+      "lng": -4.289298
+    },
+    {
+      "id": "n232",
+      "lat": 55.871111,
+      "lng": -4.289322
+    },
+    {
+      "id": "n233",
+      "lat": 55.870879,
+      "lng": -4.288047
+    },
+    {
+      "id": "n236",
+      "lat": 55.870986,
+      "lng": -4.288003
+    },
+    {
+      "id": "n237",
+      "lat": 55.87094,
+      "lng": -4.28802
+    },
+    {
+      "id": "n238",
+      "lat": 55.870991,
+      "lng": -4.288684
+    },
+    {
+      "id": "n255",
+      "lat": 55.871155,
+      "lng": -4.287176
+    },
+    {
+      "id": "n292",
+      "lat": 55.872851,
+      "lng": -4.287747
+    },
+    {
+      "id": "n293",
+      "lat": 55.872885,
+      "lng": -4.287914
+    },
+    {
+      "id": "n328",
+      "lat": 55.873173,
+      "lng": -4.289853
+    },
+    {
+      "id": "n51",
+      "lat": 55.870081,
+      "lng": -4.28626
+    },
+    {
+      "id": "n36",
+      "lat": 55.871587,
+      "lng": -4.28525
+    },
+    {
+      "id": "n95",
+      "lat": 55.871796,
+      "lng": -4.285103
+    },
+    {
+      "id": "n337",
+      "lat": 55.871273,
+      "lng": -4.289246
+    },
+    {
+      "id": "n338",
+      "lat": 55.871099,
+      "lng": -4.287951
+    },
+    {
+      "id": "n339",
+      "lat": 55.871931,
+      "lng": -4.289312
+    },
+    {
+      "id": "n344",
+      "lat": 55.871358,
+      "lng": -4.28872
+    },
+    {
+      "id": "n345",
+      "lat": 55.871286,
+      "lng": -4.288558
+    },
+    {
+      "id": "n346",
+      "lat": 55.871044,
+      "lng": -4.288658
+    },
+    {
+      "id": "n347",
+      "lat": 55.871671,
+      "lng": -4.288185
+    },
+    {
+      "id": "n348",
+      "lat": 55.871661,
+      "lng": -4.288222
+    },
+    {
+      "id": "n349",
+      "lat": 55.871707,
+      "lng": -4.288562
+    },
+    {
+      "id": "n350",
+      "lat": 55.871724,
+      "lng": -4.288579
+    },
+    {
+      "id": "n351",
+      "lat": 55.873339,
+      "lng": -4.28978
+    },
+    {
+      "id": "n323",
+      "lat": 55.873332,
+      "lng": -4.289917
+    },
+    {
+      "id": "n463",
+      "lat": 55.870448,
+      "lng": -4.286622
+    },
+    {
+      "id": "n464",
+      "lat": 55.870541,
+      "lng": -4.286665
+    }
+  ],
+  "segments": [
+    {
+      "id": "s009",
+      "from": "n12",
+      "to": "n13",
+      "lengthM": 34,
+      "highway": "steps",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.286525,
+          55.869999
+        ],
+        [
+          -4.286568,
+          55.870039
+        ],
+        [
+          -4.286592,
+          55.870072
+        ],
+        [
+          -4.286599,
+          55.870118
+        ],
+        [
+          -4.286587,
+          55.8703
+        ]
+      ],
+      "survey": {
+        "stepFree": false,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s021",
+      "from": "n25",
+      "to": "n26",
+      "lengthM": 42,
+      "highway": "service",
+      "tier": "link",
+      "coords": [
+        [
+          -4.288731,
+          55.870892
+        ],
+        [
+          -4.288076,
+          55.870806
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s022",
+      "from": "n26",
+      "to": "n27",
+      "lengthM": 46,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288076,
+          55.870806
+        ],
+        [
+          -4.287359,
+          55.870714
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s023",
+      "from": "n27",
+      "to": "n28",
+      "lengthM": 34,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287359,
+          55.870714
+        ],
+        [
+          -4.286979,
+          55.870663
+        ],
+        [
+          -4.286911,
+          55.870663
+        ],
+        [
+          -4.286828,
+          55.870682
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s033",
+      "from": "n40",
+      "to": "n41",
+      "lengthM": 45,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.289026,
+          55.872465
+        ],
+        [
+          -4.288956,
+          55.872572
+        ],
+        [
+          -4.288776,
+          55.872846
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s034",
+      "from": "n41",
+      "to": "n42",
+      "lengthM": 32,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288776,
+          55.872846
+        ],
+        [
+          -4.288576,
+          55.873116
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s035",
+      "from": "n42",
+      "to": "n43",
+      "lengthM": 36,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288576,
+          55.873116
+        ],
+        [
+          -4.288368,
+          55.873416
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s037",
+      "from": "n46",
+      "to": "n47",
+      "lengthM": 159,
+      "highway": "service",
+      "tier": "core",
+      "coords": [
+        [
+          -4.285783,
+          55.871782
+        ],
+        [
+          -4.287087,
+          55.871959
+        ],
+        [
+          -4.287186,
+          55.87196
+        ],
+        [
+          -4.287268,
+          55.871952
+        ],
+        [
+          -4.28733,
+          55.871936
+        ],
+        [
+          -4.287408,
+          55.871887
+        ],
+        [
+          -4.287486,
+          55.871811
+        ],
+        [
+          -4.288151,
+          55.871897
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s038",
+      "from": "n47",
+      "to": "n48",
+      "lengthM": 21,
+      "highway": "service",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288151,
+          55.871897
+        ],
+        [
+          -4.288175,
+          55.871918
+        ],
+        [
+          -4.288209,
+          55.871938
+        ],
+        [
+          -4.288243,
+          55.87195
+        ],
+        [
+          -4.288284,
+          55.871958
+        ],
+        [
+          -4.288335,
+          55.871961
+        ],
+        [
+          -4.288377,
+          55.871955
+        ],
+        [
+          -4.288406,
+          55.871947
+        ],
+        [
+          -4.288431,
+          55.871937
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s039",
+      "from": "n48",
+      "to": "n6",
+      "lengthM": 52,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288431,
+          55.871937
+        ],
+        [
+          -4.289247,
+          55.872052
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s043",
+      "from": "n52",
+      "to": "n46",
+      "lengthM": 31,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.285612,
+          55.87204
+        ],
+        [
+          -4.285657,
+          55.871931
+        ],
+        [
+          -4.285783,
+          55.871782
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s044",
+      "from": "n46",
+      "to": "n28",
+      "lengthM": 142,
+      "highway": "service",
+      "tier": "core",
+      "coords": [
+        [
+          -4.285783,
+          55.871782
+        ],
+        [
+          -4.286052,
+          55.871375
+        ],
+        [
+          -4.286358,
+          55.870972
+        ],
+        [
+          -4.286396,
+          55.870922
+        ],
+        [
+          -4.286433,
+          55.870883
+        ],
+        [
+          -4.286529,
+          55.870806
+        ],
+        [
+          -4.286556,
+          55.870786
+        ],
+        [
+          -4.286626,
+          55.870758
+        ],
+        [
+          -4.286828,
+          55.870682
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s085",
+      "from": "n99",
+      "to": "n101",
+      "lengthM": 39,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288812,
+          55.873874
+        ],
+        [
+          -4.288729,
+          55.873865
+        ],
+        [
+          -4.288768,
+          55.873747
+        ],
+        [
+          -4.288621,
+          55.873714
+        ],
+        [
+          -4.28868,
+          55.873628
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s086",
+      "from": "n101",
+      "to": "n102",
+      "lengthM": 27,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.28868,
+          55.873628
+        ],
+        [
+          -4.288283,
+          55.873529
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s087",
+      "from": "n41",
+      "to": "n103",
+      "lengthM": 75,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288776,
+          55.872846
+        ],
+        [
+          -4.289831,
+          55.873047
+        ],
+        [
+          -4.289888,
+          55.873084
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s089",
+      "from": "n105",
+      "to": "n106",
+      "lengthM": 22,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288129,
+          55.872326
+        ],
+        [
+          -4.288083,
+          55.87242
+        ],
+        [
+          -4.288095,
+          55.872524
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s090",
+      "from": "n106",
+      "to": "n107",
+      "lengthM": 63,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288095,
+          55.872524
+        ],
+        [
+          -4.288246,
+          55.872631
+        ],
+        [
+          -4.288318,
+          55.872782
+        ],
+        [
+          -4.28835,
+          55.873056
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s091",
+      "from": "n107",
+      "to": "n42",
+      "lengthM": 16,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.28835,
+          55.873056
+        ],
+        [
+          -4.288385,
+          55.873079
+        ],
+        [
+          -4.288576,
+          55.873116
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s092",
+      "from": "n105",
+      "to": "n108",
+      "lengthM": 15,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288129,
+          55.872326
+        ],
+        [
+          -4.288155,
+          55.872236
+        ],
+        [
+          -4.288173,
+          55.872196
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s093",
+      "from": "n108",
+      "to": "n109",
+      "lengthM": 18,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288173,
+          55.872196
+        ],
+        [
+          -4.288139,
+          55.87219
+        ],
+        [
+          -4.288109,
+          55.87218
+        ],
+        [
+          -4.288093,
+          55.872171
+        ],
+        [
+          -4.28808,
+          55.872159
+        ],
+        [
+          -4.28807,
+          55.872146
+        ],
+        [
+          -4.288064,
+          55.872131
+        ],
+        [
+          -4.288061,
+          55.872116
+        ],
+        [
+          -4.288062,
+          55.8721
+        ],
+        [
+          -4.288079,
+          55.872062
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s094",
+      "from": "n109",
+      "to": "n47",
+      "lengthM": 19,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288079,
+          55.872062
+        ],
+        [
+          -4.288151,
+          55.871897
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s095",
+      "from": "n47",
+      "to": "n110",
+      "lengthM": 9,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288151,
+          55.871897
+        ],
+        [
+          -4.288132,
+          55.871871
+        ],
+        [
+          -4.288117,
+          55.871836
+        ],
+        [
+          -4.288125,
+          55.871816
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s122",
+      "from": "n107",
+      "to": "n149",
+      "lengthM": 15,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.28835,
+          55.873056
+        ],
+        [
+          -4.288117,
+          55.873025
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s124",
+      "from": "n149",
+      "to": "n152",
+      "lengthM": 11,
+      "highway": "steps",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288117,
+          55.873025
+        ],
+        [
+          -4.287952,
+          55.873002
+        ]
+      ],
+      "survey": {
+        "stepFree": false,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s125",
+      "from": "n152",
+      "to": "n153",
+      "lengthM": 7,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287952,
+          55.873002
+        ],
+        [
+          -4.287841,
+          55.872987
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s126",
+      "from": "n153",
+      "to": "n154",
+      "lengthM": 35,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287841,
+          55.872987
+        ],
+        [
+          -4.287299,
+          55.872908
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s128",
+      "from": "n106",
+      "to": "n156",
+      "lengthM": 53,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288095,
+          55.872524
+        ],
+        [
+          -4.287994,
+          55.872524
+        ],
+        [
+          -4.287916,
+          55.872555
+        ],
+        [
+          -4.287799,
+          55.872602
+        ],
+        [
+          -4.287695,
+          55.872672
+        ],
+        [
+          -4.287673,
+          55.872756
+        ],
+        [
+          -4.287715,
+          55.872841
+        ],
+        [
+          -4.287738,
+          55.872857
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s129",
+      "from": "n156",
+      "to": "n153",
+      "lengthM": 16,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287738,
+          55.872857
+        ],
+        [
+          -4.287809,
+          55.872903
+        ],
+        [
+          -4.287841,
+          55.872987
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s138",
+      "from": "n12",
+      "to": "n5",
+      "lengthM": 13,
+      "highway": "pedestrian",
+      "tier": "link",
+      "coords": [
+        [
+          -4.286525,
+          55.869999
+        ],
+        [
+          -4.286346,
+          55.869999
+        ],
+        [
+          -4.286319,
+          55.869999
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s158",
+      "from": "n109",
+      "to": "n189",
+      "lengthM": 18,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288079,
+          55.872062
+        ],
+        [
+          -4.288363,
+          55.872102
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s159",
+      "from": "n190",
+      "to": "n48",
+      "lengthM": 10,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288521,
+          55.87187
+        ],
+        [
+          -4.288512,
+          55.871891
+        ],
+        [
+          -4.288483,
+          55.871914
+        ],
+        [
+          -4.288431,
+          55.871937
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s160",
+      "from": "n48",
+      "to": "n189",
+      "lengthM": 19,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288431,
+          55.871937
+        ],
+        [
+          -4.288363,
+          55.872102
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s161",
+      "from": "n189",
+      "to": "n108",
+      "lengthM": 18,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288363,
+          55.872102
+        ],
+        [
+          -4.28835,
+          55.872132
+        ],
+        [
+          -4.288342,
+          55.872147
+        ],
+        [
+          -4.28833,
+          55.872162
+        ],
+        [
+          -4.288315,
+          55.872173
+        ],
+        [
+          -4.288299,
+          55.872182
+        ],
+        [
+          -4.288278,
+          55.872189
+        ],
+        [
+          -4.288252,
+          55.872195
+        ],
+        [
+          -4.288223,
+          55.872197
+        ],
+        [
+          -4.288198,
+          55.872197
+        ],
+        [
+          -4.288173,
+          55.872196
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s177",
+      "from": "n208",
+      "to": "n40",
+      "lengthM": 7,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.289069,
+          55.872404
+        ],
+        [
+          -4.289026,
+          55.872465
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s212",
+      "from": "n228",
+      "to": "n26",
+      "lengthM": 3,
+      "highway": "footway",
+      "tier": "link",
+      "coords": [
+        [
+          -4.288068,
+          55.870829
+        ],
+        [
+          -4.288076,
+          55.870806
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s214",
+      "from": "n231",
+      "to": "n232",
+      "lengthM": 6,
+      "highway": "footway",
+      "tier": "link",
+      "coords": [
+        [
+          -4.289298,
+          55.871159
+        ],
+        [
+          -4.289322,
+          55.871111
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s216",
+      "from": "n228",
+      "to": "n233",
+      "lengthM": 6,
+      "highway": "steps",
+      "tier": "link",
+      "coords": [
+        [
+          -4.288068,
+          55.870829
+        ],
+        [
+          -4.288047,
+          55.870879
+        ]
+      ],
+      "survey": {
+        "stepFree": false,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s218",
+      "from": "n236",
+      "to": "n237",
+      "lengthM": 5,
+      "highway": "footway",
+      "tier": "link",
+      "coords": [
+        [
+          -4.288003,
+          55.870986
+        ],
+        [
+          -4.28802,
+          55.87094
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s219",
+      "from": "n237",
+      "to": "n233",
+      "lengthM": 7,
+      "highway": "footway",
+      "tier": "link",
+      "coords": [
+        [
+          -4.28802,
+          55.87094
+        ],
+        [
+          -4.288047,
+          55.870879
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s222",
+      "from": "n238",
+      "to": "n232",
+      "lengthM": 45,
+      "highway": "service",
+      "tier": "link",
+      "coords": [
+        [
+          -4.288684,
+          55.870991
+        ],
+        [
+          -4.288965,
+          55.871028
+        ],
+        [
+          -4.288953,
+          55.871059
+        ],
+        [
+          -4.289322,
+          55.871111
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s224",
+      "from": "n25",
+      "to": "n238",
+      "lengthM": 11,
+      "highway": "service",
+      "tier": "link",
+      "coords": [
+        [
+          -4.288731,
+          55.870892
+        ],
+        [
+          -4.288684,
+          55.870991
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s245",
+      "from": "n27",
+      "to": "n255",
+      "lengthM": 50,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287359,
+          55.870714
+        ],
+        [
+          -4.287176,
+          55.871155
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s283",
+      "from": "n292",
+      "to": "n156",
+      "lengthM": 1,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287747,
+          55.872851
+        ],
+        [
+          -4.287738,
+          55.872857
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s284",
+      "from": "n156",
+      "to": "n154",
+      "lengthM": 75,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287738,
+          55.872857
+        ],
+        [
+          -4.287642,
+          55.87287
+        ],
+        [
+          -4.287622,
+          55.872847
+        ],
+        [
+          -4.287594,
+          55.872812
+        ],
+        [
+          -4.287567,
+          55.87276
+        ],
+        [
+          -4.287522,
+          55.872765
+        ],
+        [
+          -4.287502,
+          55.872767
+        ],
+        [
+          -4.287493,
+          55.872749
+        ],
+        [
+          -4.287487,
+          55.872733
+        ],
+        [
+          -4.287489,
+          55.872717
+        ],
+        [
+          -4.287494,
+          55.872703
+        ],
+        [
+          -4.287501,
+          55.872693
+        ],
+        [
+          -4.287459,
+          55.872686
+        ],
+        [
+          -4.287375,
+          55.872804
+        ],
+        [
+          -4.287384,
+          55.872805
+        ],
+        [
+          -4.287401,
+          55.872807
+        ],
+        [
+          -4.287423,
+          55.872811
+        ],
+        [
+          -4.287445,
+          55.872814
+        ],
+        [
+          -4.287473,
+          55.872819
+        ],
+        [
+          -4.287455,
+          55.872846
+        ],
+        [
+          -4.287445,
+          55.87286
+        ],
+        [
+          -4.287438,
+          55.872871
+        ],
+        [
+          -4.287428,
+          55.872885
+        ],
+        [
+          -4.28742,
+          55.872898
+        ],
+        [
+          -4.287412,
+          55.872909
+        ],
+        [
+          -4.287314,
+          55.872887
+        ],
+        [
+          -4.287299,
+          55.872908
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s285",
+      "from": "n154",
+      "to": "n152",
+      "lengthM": 101,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287299,
+          55.872908
+        ],
+        [
+          -4.287113,
+          55.87315
+        ],
+        [
+          -4.28716,
+          55.873153
+        ],
+        [
+          -4.287299,
+          55.87297
+        ],
+        [
+          -4.287335,
+          55.872976
+        ],
+        [
+          -4.287345,
+          55.87296
+        ],
+        [
+          -4.287355,
+          55.872943
+        ],
+        [
+          -4.287942,
+          55.873024
+        ],
+        [
+          -4.287952,
+          55.873002
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s286",
+      "from": "n152",
+      "to": "n292",
+      "lengthM": 24,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287952,
+          55.873002
+        ],
+        [
+          -4.287962,
+          55.872976
+        ],
+        [
+          -4.287919,
+          55.872948
+        ],
+        [
+          -4.287903,
+          55.872926
+        ],
+        [
+          -4.287854,
+          55.872919
+        ],
+        [
+          -4.287856,
+          55.872904
+        ],
+        [
+          -4.287809,
+          55.872892
+        ],
+        [
+          -4.287778,
+          55.872873
+        ],
+        [
+          -4.287747,
+          55.872851
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s287",
+      "from": "n149",
+      "to": "n293",
+      "lengthM": 23,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288117,
+          55.873025
+        ],
+        [
+          -4.288124,
+          55.873005
+        ],
+        [
+          -4.288016,
+          55.872988
+        ],
+        [
+          -4.287952,
+          55.872956
+        ],
+        [
+          -4.287927,
+          55.872928
+        ],
+        [
+          -4.287923,
+          55.872908
+        ],
+        [
+          -4.287914,
+          55.872885
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s288",
+      "from": "n101",
+      "to": "n43",
+      "lengthM": 32,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.28868,
+          55.873628
+        ],
+        [
+          -4.288398,
+          55.873481
+        ],
+        [
+          -4.288368,
+          55.873416
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s328",
+      "from": "n103",
+      "to": "n328",
+      "lengthM": 10,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.289888,
+          55.873084
+        ],
+        [
+          -4.289853,
+          55.873173
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s333",
+      "from": "n5",
+      "to": "n51",
+      "lengthM": 10,
+      "highway": "pedestrian",
+      "tier": "link",
+      "coords": [
+        [
+          -4.286319,
+          55.869999
+        ],
+        [
+          -4.28626,
+          55.870081
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s334",
+      "from": "n51",
+      "to": "n36",
+      "lengthM": 179,
+      "highway": "pedestrian",
+      "tier": "link",
+      "coords": [
+        [
+          -4.28626,
+          55.870081
+        ],
+        [
+          -4.28525,
+          55.871587
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s335",
+      "from": "n36",
+      "to": "n95",
+      "lengthM": 25,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.28525,
+          55.871587
+        ],
+        [
+          -4.285103,
+          55.871796
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s338",
+      "from": "n337",
+      "to": "n231",
+      "lengthM": 13,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.289246,
+          55.871273
+        ],
+        [
+          -4.289298,
+          55.871159
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s339",
+      "from": "n338",
+      "to": "n236",
+      "lengthM": 13,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.287951,
+          55.871099
+        ],
+        [
+          -4.288003,
+          55.870986
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s340",
+      "from": "n339",
+      "to": "n6",
+      "lengthM": 14,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.289312,
+          55.871931
+        ],
+        [
+          -4.289289,
+          55.871984
+        ],
+        [
+          -4.289247,
+          55.872052
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s346",
+      "from": "n344",
+      "to": "n345",
+      "lengthM": 16,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.28872,
+          55.871358
+        ],
+        [
+          -4.288726,
+          55.871343
+        ],
+        [
+          -4.288727,
+          55.871337
+        ],
+        [
+          -4.288718,
+          55.871335
+        ],
+        [
+          -4.288709,
+          55.871331
+        ],
+        [
+          -4.288702,
+          55.871327
+        ],
+        [
+          -4.288697,
+          55.871322
+        ],
+        [
+          -4.288694,
+          55.871317
+        ],
+        [
+          -4.288692,
+          55.87131
+        ],
+        [
+          -4.288693,
+          55.871305
+        ],
+        [
+          -4.288558,
+          55.871286
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s347",
+      "from": "n345",
+      "to": "n344",
+      "lengthM": 99,
+      "highway": "pedestrian",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288558,
+          55.871286
+        ],
+        [
+          -4.288426,
+          55.871268
+        ],
+        [
+          -4.288424,
+          55.871272
+        ],
+        [
+          -4.288418,
+          55.871278
+        ],
+        [
+          -4.288413,
+          55.871281
+        ],
+        [
+          -4.288407,
+          55.871284
+        ],
+        [
+          -4.288399,
+          55.871287
+        ],
+        [
+          -4.288391,
+          55.871288
+        ],
+        [
+          -4.288382,
+          55.871289
+        ],
+        [
+          -4.288371,
+          55.871289
+        ],
+        [
+          -4.288358,
+          55.871287
+        ],
+        [
+          -4.288357,
+          55.871293
+        ],
+        [
+          -4.28835,
+          55.871308
+        ],
+        [
+          -4.288337,
+          55.871343
+        ],
+        [
+          -4.28833,
+          55.871358
+        ],
+        [
+          -4.288318,
+          55.87139
+        ],
+        [
+          -4.288311,
+          55.871405
+        ],
+        [
+          -4.288297,
+          55.871439
+        ],
+        [
+          -4.28829,
+          55.871455
+        ],
+        [
+          -4.288277,
+          55.871487
+        ],
+        [
+          -4.288269,
+          55.871501
+        ],
+        [
+          -4.288257,
+          55.871535
+        ],
+        [
+          -4.28825,
+          55.871549
+        ],
+        [
+          -4.288249,
+          55.871553
+        ],
+        [
+          -4.288262,
+          55.871556
+        ],
+        [
+          -4.28827,
+          55.871559
+        ],
+        [
+          -4.288277,
+          55.871563
+        ],
+        [
+          -4.288281,
+          55.871566
+        ],
+        [
+          -4.288285,
+          55.87157
+        ],
+        [
+          -4.288287,
+          55.871574
+        ],
+        [
+          -4.288289,
+          55.87158
+        ],
+        [
+          -4.288288,
+          55.871586
+        ],
+        [
+          -4.288428,
+          55.871605
+        ],
+        [
+          -4.288557,
+          55.871623
+        ],
+        [
+          -4.288561,
+          55.871618
+        ],
+        [
+          -4.288565,
+          55.871614
+        ],
+        [
+          -4.288572,
+          55.871609
+        ],
+        [
+          -4.288581,
+          55.871606
+        ],
+        [
+          -4.288589,
+          55.871604
+        ],
+        [
+          -4.288599,
+          55.871602
+        ],
+        [
+          -4.28861,
+          55.871602
+        ],
+        [
+          -4.28862,
+          55.871603
+        ],
+        [
+          -4.288621,
+          55.871598
+        ],
+        [
+          -4.288627,
+          55.871586
+        ],
+        [
+          -4.28864,
+          55.871553
+        ],
+        [
+          -4.288647,
+          55.871538
+        ],
+        [
+          -4.28866,
+          55.871505
+        ],
+        [
+          -4.288667,
+          55.87149
+        ],
+        [
+          -4.288681,
+          55.871454
+        ],
+        [
+          -4.288687,
+          55.87144
+        ],
+        [
+          -4.2887,
+          55.871407
+        ],
+        [
+          -4.288707,
+          55.871393
+        ],
+        [
+          -4.28872,
+          55.871358
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s348",
+      "from": "n346",
+      "to": "n345",
+      "lengthM": 28,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288658,
+          55.871044
+        ],
+        [
+          -4.288558,
+          55.871286
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s349",
+      "from": "n346",
+      "to": "n238",
+      "lengthM": 6,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288658,
+          55.871044
+        ],
+        [
+          -4.288684,
+          55.870991
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s350",
+      "from": "n347",
+      "to": "n348",
+      "lengthM": 10,
+      "highway": "steps",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288185,
+          55.871671
+        ],
+        [
+          -4.288131,
+          55.871665
+        ],
+        [
+          -4.288137,
+          55.871651
+        ],
+        [
+          -4.288222,
+          55.871661
+        ]
+      ],
+      "survey": {
+        "stepFree": false,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s351",
+      "from": "n110",
+      "to": "n348",
+      "lengthM": 20,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288125,
+          55.871816
+        ],
+        [
+          -4.288168,
+          55.871704
+        ],
+        [
+          -4.288203,
+          55.871709
+        ],
+        [
+          -4.288222,
+          55.871661
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s352",
+      "from": "n349",
+      "to": "n190",
+      "lengthM": 20,
+      "highway": "footway",
+      "tier": "core",
+      "coords": [
+        [
+          -4.288562,
+          55.871707
+        ],
+        [
+          -4.288542,
+          55.871757
+        ],
+        [
+          -4.288569,
+          55.87176
+        ],
+        [
+          -4.288521,
+          55.87187
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s353",
+      "from": "n350",
+      "to": "n349",
+      "lengthM": 10,
+      "highway": "steps",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.288579,
+          55.871724
+        ],
+        [
+          -4.288637,
+          55.871732
+        ],
+        [
+          -4.288642,
+          55.871719
+        ],
+        [
+          -4.288562,
+          55.871707
+        ]
+      ],
+      "survey": {
+        "stepFree": false,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s356",
+      "from": "n328",
+      "to": "n351",
+      "lengthM": 19,
+      "highway": "service",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.289853,
+          55.873173
+        ],
+        [
+          -4.28978,
+          55.873339
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s357",
+      "from": "n328",
+      "to": "n323",
+      "lengthM": 24,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.289853,
+          55.873173
+        ],
+        [
+          -4.28998,
+          55.873192
+        ],
+        [
+          -4.289917,
+          55.873332
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s495",
+      "from": "n13",
+      "to": "n463",
+      "lengthM": 17,
+      "highway": "footway",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.286587,
+          55.8703
+        ],
+        [
+          -4.286591,
+          55.870364
+        ],
+        [
+          -4.286612,
+          55.870427
+        ],
+        [
+          -4.286622,
+          55.870448
+        ]
+      ],
+      "survey": {
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s496",
+      "from": "n463",
+      "to": "n464",
+      "lengthM": 11,
+      "highway": "steps",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.286622,
+          55.870448
+        ],
+        [
+          -4.286665,
+          55.870541
+        ]
+      ],
+      "survey": {
+        "stepFree": false,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    },
+    {
+      "id": "s497",
+      "from": "n464",
+      "to": "n28",
+      "lengthM": 19,
+      "highway": "steps",
+      "tier": "alt",
+      "coords": [
+        [
+          -4.286665,
+          55.870541
+        ],
+        [
+          -4.286828,
+          55.870682
+        ]
+      ],
+      "survey": {
+        "stepFree": false,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
+      }
+    }
+  ]
+}
