@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { campusGraph, destinations } from "../data/campusGraph";
-import { assess } from "../navigation/accessibility";
+import { isSurveyed, type RouteProfile } from "../navigation/accessibility";
 import type { Route } from "../navigation/pathfinding";
 import { Colors } from "../constants/theme";
 
@@ -16,6 +16,8 @@ const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY ?? "";
 interface CampusMapProps {
   /** Active route to draw, if any. */
   route?: Route | null;
+  /** Who the route was planned for — reserved for per-profile styling. */
+  profile?: RouteProfile;
   /** Draw the surveyed network faintly behind the route. */
   showNetwork?: boolean;
 }
@@ -80,7 +82,7 @@ export default function CampusMap({ route = null, showNetwork = true }: CampusMa
       const path = edge.coords.map(([lng, lat]) => ({ lat, lng }));
       path.forEach((p) => bounds.extend(p));
 
-      const { verified } = assess(edge);
+      const verified = isSurveyed(edge);
       routeLinesRef.current.push(
         new google.maps.Polyline({
           path,

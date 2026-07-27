@@ -69,7 +69,18 @@ on site is the first fieldwork task.
 
 - Interactive campus map (Google Maps) showing the surveyed network
 - **A\*** routing with an admissible straight-line heuristic
-- Two routing profiles: shortest route, and **step-free** for wheelchair users
+- **Four routing profiles**, because "accessible" is not one thing:
+
+  | Profile | Blocks | Weighs heavily |
+  | ------- | ------ | -------------- |
+  | Step-free (wheelchair) | steps, <1.0 m width, >8% gradient, raised kerbs | narrow paths, steep ramps |
+  | Walks with difficulty | steps without a handrail, >10% gradient | gradient, rough ground, **nowhere to rest** |
+  | Visually impaired | nothing — steps are not a barrier | **missing tactile paving, unlit paths, uneven ground** |
+  | Shortest | nothing | distance only |
+
+  The rules live in one reviewable table in `src/navigation/accessibility.ts`,
+  separate from the search, so the criteria can be challenged and cited
+  independently of the code that applies them.
 - Routes drawn along the real path geometry, not straight lines between pins
 - Unsurveyed stretches drawn **dashed** and reported as unverified — the app
   never claims a path is accessible when nobody has checked

@@ -157,6 +157,14 @@ Leave them alone and they will quietly protect your fieldwork.
 segment as surveyed only once both are filled, and until then it warns the
 user that the route is unverified.
 
+**Every other column feeds the routing model too, and each one serves a
+different traveller.** `handrail` decides whether someone who walks with a
+stick can use a flight of steps at all. `lit` and `tactile_paving` are what a
+visually impaired user's route is chosen on — for them steps are not a
+barrier, but an unlit path with no tactile warning at the crossing is.
+`seating_nearby` is what an older user needs to know. None of these are
+optional extras; leaving one blank removes a traveller's route from the app.
+
 Measure `width_m` at the **narrowest** point, not the average: a 2 m path
 with one 0.8 m pinch point is a 0.8 m path to a wheelchair user.
 

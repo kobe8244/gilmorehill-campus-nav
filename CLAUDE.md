@@ -77,9 +77,23 @@ Key design rule: `null` means "not surveyed", and is never treated as
 Telling a wheelchair user a path is passable when nobody has checked is
 the failure this project exists to prevent.
 
-Thresholds live in `src/navigation/accessibility.ts` and are working
-approximations of BS 8300-1:2018 / DfT Inclusive Mobility — they must be
-confirmed against the primary sources before being quoted academically.
+Four routing profiles live in `src/navigation/accessibility.ts` as one
+reviewable `PROFILES` table: `wheelchair`, `limitedMobility`, `lowVision`
+and `shortest`. "Accessible" is not one thing — steps stop a wheelchair
+user completely but are barely an obstacle to someone with low vision, for
+whom missing tactile paving and poor lighting are the real barriers. All
+twelve surveyed attributes feed the model; adding a profile means adding a
+row to that table, never touching the A* search.
+
+Every penalty multiplier MUST stay >= 1. The A* heuristic is straight-line
+distance, which is admissible only while cost never falls below true
+distance; a multiplier below 1 silently destroys the optimality guarantee.
+
+Thresholds in that table are working approximations of BS 8300-1:2018 /
+DfT Inclusive Mobility — they must be confirmed against the primary
+sources before being quoted academically. The penalty weights currently
+have no empirical basis and need either literature support or user
+preference data.
 
 ## Project Structure
 scripts/

@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { campusGraph, destinations, surveyProgress } from "../data/campusGraph";
 import { findRoute, type Route } from "../navigation/pathfinding";
-import { describeRoute, type RouteProfile } from "../navigation/accessibility";
+import {
+  describeRoute,
+  PROFILE_LIST,
+  PROFILES,
+  type RouteProfile,
+} from "../navigation/accessibility";
 import { useTTS } from "../hooks/useTTS";
 import CampusMap from "../components/CampusMap";
 
 type Outcome =
   | { kind: "none" }
   | { kind: "route"; route: Route; profile: RouteProfile }
-  // The accessible search found nothing, but a route does exist for someone
-  // who can manage steps. Saying so is more useful than "no route found".
-  | { kind: "noAccessibleRoute"; fallback: Route | null }
+  // The chosen profile found nothing, but a route does exist for someone
+  // without that barrier. Saying so is more useful than "no route found".
+  | { kind: "noAccessibleRoute"; profile: RouteProfile; fallback: Route | null }
   | { kind: "noRoute" };
 
 export default function RoutePlannerPage() {
   const [startId, setStartId] = useState(destinations[0].id);
   // Default to a pair that is genuinely a journey across campus.
   const [endId, setEndId] = useState(destinations[2].id);
-  const [profile, setProfile] = useState<RouteProfile>("accessible");
+  const [profile, setProfile] = useState<RouteProfile>("wheelchair");
   const [outcome, setOutcome] = useState<Outcome>({ kind: "none" });
   const { speak } = useTTS();
 
@@ -25,6 +30,7 @@ export default function RoutePlannerPage() {
   const nodeOf = (id: string) => destinations.find((d) => d.id === id)?.nodeId;
 
   const progress = surveyProgress();
+  const reset = () => setOutcome({ kind: "none" });
 
   const handleFindRoute = () => {
     const from = nodeOf(startId);
@@ -35,25 +41,29 @@ export default function RoutePlannerPage() {
 
     if (route) {
       setOutcome({ kind: "route", route, profile });
-      const summary = describeRoute(route.edges);
+      const summary = describeRoute(route.edges, profile);
       const caution =
         summary.verifiedShare < 1
           ? " Part of this route has not been surveyed yet, so please take care."
           : "";
+      const rest =
+        profile === "limitedMobility" && summary.restPoints > 0
+          ? ` There are ${summary.restPoints} places to rest along the way.`
+          : "";
       speak(
         `Route found from ${nameOf(startId)} to ${nameOf(endId)}. ` +
-          `${summary.metres} metres.${caution}`
+          `${summary.metres} metres.${rest}${caution}`
       );
       return;
     }
 
-    if (profile === "accessible") {
+    if (profile !== "shortest") {
       const fallback = findRoute(campusGraph, from, to, "shortest");
-      setOutcome({ kind: "noAccessibleRoute", fallback });
+      setOutcome({ kind: "noAccessibleRoute", profile, fallback });
       speak(
-        `No step-free route was found from ${nameOf(startId)} to ${nameOf(endId)}. ` +
+        `No suitable route was found from ${nameOf(startId)} to ${nameOf(endId)}. ` +
           (fallback
-            ? "The only known route includes steps."
+            ? "The only known route has barriers you asked to avoid."
             : "No route is known at all.")
       );
       return;
@@ -66,7 +76,7 @@ export default function RoutePlannerPage() {
   const swap = () => {
     setStartId(endId);
     setEndId(startId);
-    setOutcome({ kind: "none" });
+    reset();
   };
 
   return (
@@ -79,7 +89,7 @@ export default function RoutePlannerPage() {
           value={startId}
           onChange={(e) => {
             setStartId(e.target.value);
-            setOutcome({ kind: "none" });
+            reset();
           }}
         >
           {destinations.map((d) => (
@@ -95,7 +105,7 @@ export default function RoutePlannerPage() {
           value={endId}
           onChange={(e) => {
             setEndId(e.target.value);
-            setOutcome({ kind: "none" });
+            reset();
           }}
         >
           {destinations.map((d) => (
@@ -115,30 +125,65 @@ export default function RoutePlannerPage() {
         </button>
 
         <fieldset style={{ border: "none", padding: 0, margin: "20px 0 0" }}>
-          <legend style={{ fontWeight: 600, padding: 0 }}>Route type</legend>
-          {(
-            [
-              ["accessible", "Step-free (wheelchair accessible)"],
-              ["shortest", "Shortest route (may include steps)"],
-            ] as const
-          ).map(([value, text]) => (
-            <div className="checkbox-row" key={value}>
+          <legend style={{ fontWeight: 600, padding: 0 }}>Plan this route for</legend>
+
+          {PROFILE_LIST.map((p) => (
+            <div className="checkbox-row" key={p.id} style={{ alignItems: "flex-start" }}>
               <input
-                id={`profile-${value}`}
+                id={`profile-${p.id}`}
                 type="radio"
                 name="profile"
-                value={value}
-                checked={profile === value}
+                value={p.id}
+                checked={profile === p.id}
                 onChange={() => {
-                  setProfile(value);
-                  setOutcome({ kind: "none" });
+                  setProfile(p.id);
+                  reset();
                 }}
+                style={{ marginTop: 4 }}
               />
-              <label htmlFor={`profile-${value}`} style={{ margin: 0 }}>
-                {text}
+              <label htmlFor={`profile-${p.id}`} style={{ margin: 0 }}>
+                {p.label}
+                <span
+                  style={{
+                    display: "block",
+                    fontWeight: 400,
+                    fontSize: 15,
+                    color: "var(--color-text-secondary)",
+                  }}
+                >
+                  {p.description}
+                </span>
               </label>
             </div>
           ))}
+
+          <div className="checkbox-row" style={{ alignItems: "flex-start" }}>
+            <input
+              id="profile-shortest"
+              type="radio"
+              name="profile"
+              value="shortest"
+              checked={profile === "shortest"}
+              onChange={() => {
+                setProfile("shortest");
+                reset();
+              }}
+              style={{ marginTop: 4 }}
+            />
+            <label htmlFor="profile-shortest" style={{ margin: 0 }}>
+              Shortest route
+              <span
+                style={{
+                  display: "block",
+                  fontWeight: 400,
+                  fontSize: 15,
+                  color: "var(--color-text-secondary)",
+                }}
+              >
+                No accessibility filtering — may include steps and steep climbs.
+              </span>
+            </label>
+          </div>
         </fieldset>
 
         <button
@@ -166,35 +211,36 @@ export default function RoutePlannerPage() {
           {outcome.kind === "noAccessibleRoute" && (
             <div className="result-box">
               <h2 className="result-title" style={{ color: "var(--color-error)" }}>
-                No step-free route
+                No suitable route
               </h2>
               <p>
-                There is no known step-free route from {nameOf(startId)} to{" "}
-                {nameOf(endId)}.
+                There is no known route from {nameOf(startId)} to {nameOf(endId)}{" "}
+                that meets the needs of “
+                {outcome.profile === "shortest"
+                  ? "shortest route"
+                  : PROFILES[outcome.profile].label}
+                ”.
               </p>
               {outcome.fallback ? (
                 <p>
-                  The only route currently mapped includes steps
-                  {" ("}
-                  {Math.round(outcome.fallback.distanceM)} m{")"}. Switch to{" "}
-                  <strong>Shortest route</strong> to see it, or contact the
-                  building for assistance.
+                  A route does exist ({Math.round(outcome.fallback.distanceM)} m), but
+                  it has barriers you asked to avoid. Select{" "}
+                  <strong>Shortest route</strong> to see it, or contact the building
+                  for assistance.
                 </p>
               ) : (
                 <p>No route of any kind is mapped between these two places.</p>
               )}
               <p style={{ color: "var(--color-text-secondary)" }}>
-                This gap is a survey finding, not an app error: no accessible
-                entrance has been recorded here yet.
+                This gap is a survey finding, not an app error: no accessible way
+                through has been recorded here yet.
               </p>
             </div>
           )}
 
           {outcome.kind === "noRoute" && (
             <div className="result-box">
-              <p className="error-text">
-                No route found between these locations.
-              </p>
+              <p className="error-text">No route found between these locations.</p>
             </div>
           )}
         </div>
@@ -207,8 +253,8 @@ export default function RoutePlannerPage() {
           }}
         >
           Survey progress: {Math.round(progress.share * 100)}% of the{" "}
-          {(progress.totalM / 1000).toFixed(2)} km study network has been
-          measured on site. Unmeasured paths are shown as dashed lines.
+          {(progress.totalM / 1000).toFixed(2)} km study network has been measured on
+          site. Unmeasured paths are shown as dashed lines.
         </p>
       </div>
     </div>
@@ -226,27 +272,36 @@ function RouteResult({
   fromName: string;
   toName: string;
 }) {
-  const summary = describeRoute(route.edges);
+  const summary = describeRoute(route.edges, profile);
   const fullyVerified = summary.verifiedShare >= 1;
+  const label = profile === "shortest" ? "Shortest route" : PROFILES[profile].label;
 
   return (
     <>
       <div className="map-preview">
-        <CampusMap route={route} />
+        <CampusMap route={route} profile={profile} />
       </div>
       <div className="result-box">
-        <h2 className="result-title">
-          {profile === "accessible" ? "Step-free route found" : "Route found"}
-        </h2>
+        <h2 className="result-title">Route found</h2>
         <p className="result-distance">
           {fromName} → {toName}: <strong>{summary.metres} m</strong>
           {route.edges.length > 0 && ` · ${route.edges.length} path segments`}
         </p>
+        <p style={{ margin: "0 0 8px", color: "var(--color-text-secondary)" }}>
+          Planned for: {label}
+        </p>
+
+        {profile === "limitedMobility" && summary.restPoints > 0 && (
+          <p style={{ margin: "0 0 8px", color: "var(--color-success)" }}>
+            {summary.restPoints} place{summary.restPoints === 1 ? "" : "s"} to rest
+            along the way.
+          </p>
+        )}
 
         {!fullyVerified && (
           <p className="error-text">
-            ⚠ {Math.round((1 - summary.verifiedShare) * 100)}% of this route has
-            not been surveyed yet — its accessibility is unconfirmed.
+            ⚠ {Math.round((1 - summary.verifiedShare) * 100)}% of this route has not
+            been surveyed yet — its accessibility is unconfirmed.
           </p>
         )}
 
