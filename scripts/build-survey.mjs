@@ -59,6 +59,9 @@ for (const f of ["campus-network.geojson", "buildings.geojson"]) {
 // into, and for when a spreadsheet has the file locked anyway.
 const DRY_RUN = process.argv.includes("--dry-run");
 
+/** Files that already held exactly the right content, so were left alone. */
+const unchanged = [];
+
 // Writing a CSV that a spreadsheet has open fails with EBUSY on Windows
 // (Excel and WPS both take an exclusive lock). That will happen constantly to
 // anyone typing survey data, so it gets a plain-English message rather than a
@@ -69,6 +72,22 @@ function write(path, contents) {
   if (DRY_RUN) {
     console.log(`  [dry run] would write ${name} (${(contents.length / 1024).toFixed(1)} KB)`);
     return;
+  }
+  // Skip the write when nothing would change. Re-running the build with a
+  // CSV open for reference is a normal thing to do, and failing on a file
+  // that did not need touching is pure obstruction.
+  // Line endings are compared loosely: git checks these files out with CRLF
+  // on Windows while the generator emits LF, and rewriting a file purely to
+  // flip its newlines is churn that would also lock out anyone with the CSV
+  // open for reference.
+  const sameContent = (a, b) => a.replace(/\r\n/g, "\n") === b.replace(/\r\n/g, "\n");
+  try {
+    if (existsSync(path) && sameContent(readFileSync(path, "utf8"), contents)) {
+      unchanged.push(name);
+      return;
+    }
+  } catch {
+    // Unreadable — fall through and let the write report the real problem.
   }
   try {
     writeFileSync(path, contents);
@@ -590,9 +609,11 @@ for (const e of entrancePoints) {
     entrance_id: entranceId,
     building: destName.get(p.dest_id) ?? p.dest_id,
     serves: p.dest_id,
-    // OSM's `wheelchair` tag is the only accessibility claim available here
-    // and it is present on almost nothing — treat it as a hint to verify.
-    accessible: p.wheelchair === "yes" ? "yes" : p.wheelchair === "no" ? "no" : "",
+    // Deliberately NOT seeded from OSM's `wheelchair` tag. Pre-filling it
+    // would make a third-party claim indistinguishable from a surveyor's
+    // verdict, and the app would then report an unvisited door as confirmed.
+    // OSM's claim stays visible in `osm_hint`, where it belongs.
+    accessible: "",
     door_type: "",
     step_free: "",
     step_count: "",
@@ -605,13 +626,31 @@ for (const e of entrancePoints) {
     osm_hint: p.osm_hint ?? "",
     notes: p.entrance === "emergency" ? "OSM says emergency exit — confirm if usable" : "",
   };
+  // Earlier versions of this script pre-filled `accessible` from OSM's
+  // wheelchair tag. Those values are not fieldwork, and left in place they
+  // would now masquerade as a surveyor's verdict, so they are recognised and
+  // discarded rather than carried forward.
+  const legacySeed = (c) =>
+    c === "accessible"
+      ? p.wheelchair === "yes"
+        ? "yes"
+        : p.wheelchair === "no"
+          ? "no"
+          : ""
+      : null;
+
   entLines.push(
     csvRow(
       ENTRANCE_COLUMNS.map((c) => {
         const kept = (prior?.[c] ?? "").trim();
         // Same rule as segments: a value that merely repeats what OSM
         // suggested is not fieldwork, so let it be re-seeded.
-        if (ENTRANCE_FIELD_COLUMNS.includes(c) && kept !== "" && kept !== (seeded[c] ?? "")) {
+        if (
+          ENTRANCE_FIELD_COLUMNS.includes(c) &&
+          kept !== "" &&
+          kept !== (seeded[c] ?? "") &&
+          kept !== legacySeed(c)
+        ) {
           return kept;
         }
         return seeded[c] ?? "";
@@ -636,6 +675,45 @@ const bool = (v) => (v === "yes" ? true : v === "no" ? false : null);
 const surveyed = parseCsv(readFileSync(join(DIR, "segments.csv"), "utf8"));
 const surveyedById = new Map(surveyed.map((r) => [r.segment_id, r]));
 
+// The entrances go to the app as well as to the field kit. An outdoor route
+// ends at a door, and a door the traveller cannot open is the same as no
+// route at all — so the app has to be able to see what the entrance survey
+// found, and to prefer a different door when one is usable.
+const surveyedEntrances = parseCsv(readFileSync(join(DIR, "entrances.csv"), "utf8"));
+
+const appEntrances = surveyedEntrances
+  .filter((r) => r.entrance_id && !r.entrance_id.startsWith("EXAMPLE"))
+  .map((r) => {
+    const lat = num(r.lat);
+    const lng = num(r.lng);
+    // Snap against the nodes the APP actually has, not the full downloaded
+    // network. `nearest_node_id` in the CSV was chosen from all 500 segments
+    // and can name a junction outside the survey subset — routing to which
+    // would fail silently. Hand-added entrances have no node at all yet.
+    const snapped =
+      lat != null && lng != null ? nearestNode({ lat, lng }, usedNodes) : { nodeId: null };
+    const nodeId = snapped.nodeId;
+    return {
+      id: r.entrance_id,
+      serves: r.serves || null,
+      building: r.building || null,
+      lat: lat != null ? round6(lat) : null,
+      lng: lng != null ? round6(lng) : null,
+      nodeId: nodeId ?? null,
+      osmHint: r.osm_hint || null,
+      survey: {
+        accessible: bool(r.accessible),
+        doorType: r.door_type || null,
+        stepFree: bool(r.step_free),
+        stepCount: num(r.step_count),
+        ramp: bool(r.ramp),
+        doorWidthM: num(r.door_width_m),
+        indoorHandoverId: r.indoor_handover_id || null,
+        notes: r.notes || null,
+      },
+    };
+  });
+
 const appNetwork = {
   generated: new Date().toISOString(),
   attribution: "Base path geometry © OpenStreetMap contributors, ODbL. Accessibility attributes surveyed on site.",
@@ -647,6 +725,7 @@ const appNetwork = {
     nodeId: d.nodeId,
     insideOf: d.insideOf ?? null,
   })),
+  entrances: appEntrances,
   nodes: [...usedNodes]
     .filter((id) => nodeCoord.has(id))
     .map((id) => ({ id, lat: round6(nodeCoord.get(id).lat), lng: round6(nodeCoord.get(id).lng) })),

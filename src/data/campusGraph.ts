@@ -1,4 +1,4 @@
-import type { Graph, GraphEdge, GraphNode } from "../navigation/pathfinding";
+import type { Entrance, Graph, GraphEdge, GraphNode } from "../navigation/pathfinding";
 import rawNetwork from "./campusNetwork.json";
 
 // The campus network is generated, not hand-written: `npm run survey:build`
@@ -26,6 +26,7 @@ interface CampusNetworkFile {
   generated: string;
   attribution: string;
   destinations: Destination[];
+  entrances: Entrance[];
   nodes: GraphNode[];
   segments: GraphEdge[];
 }
@@ -42,6 +43,12 @@ export const campusGraph: Graph = {
 
 /** The four buildings this project navigates between. */
 export const destinations: Destination[] = network.destinations;
+
+/** Every mapped way into those buildings — the indoor handover points. */
+export const entrances: Entrance[] = network.entrances ?? [];
+
+export const entrancesFor = (destinationId: string): Entrance[] =>
+  entrances.filter((e) => e.serves === destinationId);
 
 export const attribution: string = network.attribution;
 export const generatedAt: string = network.generated;

@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { campusGraph, destinations, surveyProgress } from "../data/campusGraph";
-import { findRoute, type Route } from "../navigation/pathfinding";
+import { campusGraph, destinations, entrancesFor, surveyProgress } from "../data/campusGraph";
 import {
+  findRouteToDestination,
+  type Entrance,
+  type RouteToEntrance,
+} from "../navigation/pathfinding";
+import {
+  assessEntrance,
   describeRoute,
   PROFILE_LIST,
-  PROFILES,
+  profileLabel,
   type RouteProfile,
 } from "../navigation/accessibility";
 import { useTTS } from "../hooks/useTTS";
@@ -12,10 +17,10 @@ import CampusMap from "../components/CampusMap";
 
 type Outcome =
   | { kind: "none" }
-  | { kind: "route"; route: Route; profile: RouteProfile }
+  | { kind: "route"; route: RouteToEntrance; profile: RouteProfile }
   // The chosen profile found nothing, but a route does exist for someone
   // without that barrier. Saying so is more useful than "no route found".
-  | { kind: "noAccessibleRoute"; profile: RouteProfile; fallback: Route | null }
+  | { kind: "noAccessibleRoute"; profile: RouteProfile; fallback: RouteToEntrance | null }
   | { kind: "noRoute" };
 
 export default function RoutePlannerPage() {
@@ -32,14 +37,26 @@ export default function RoutePlannerPage() {
   const progress = surveyProgress();
   const reset = () => setOutcome({ kind: "none" });
 
-  const handleFindRoute = () => {
+  // Route to the destination by way of whichever entrance this traveller can
+  // actually use, rather than to a single fixed arrival point.
+  const routeTo = (dest: string, p: RouteProfile) => {
     const from = nodeOf(startId);
-    const to = nodeOf(endId);
-    if (!from || !to) return;
+    const to = nodeOf(dest);
+    if (!from || !to) return null;
+    return findRouteToDestination(
+      campusGraph,
+      from,
+      to,
+      entrancesFor(dest),
+      p,
+      assessEntrance
+    );
+  };
 
-    const route = findRoute(campusGraph, from, to, profile);
+  const handleFindRoute = () => {
+    const route = routeTo(endId, profile);
 
-    if (route) {
+    if (route && !route.entranceUnusable) {
       setOutcome({ kind: "route", route, profile });
       const summary = describeRoute(route.edges, profile);
       const caution =
@@ -57,13 +74,17 @@ export default function RoutePlannerPage() {
     }
 
     if (profile !== "shortest") {
-      const fallback = findRoute(campusGraph, from, to, "shortest");
+      // Either no path, or a path that only reaches a door this traveller
+      // cannot use. Both are reported the same way, with the reason given.
+      const fallback = route ?? routeTo(endId, "shortest");
       setOutcome({ kind: "noAccessibleRoute", profile, fallback });
       speak(
         `No suitable route was found from ${nameOf(startId)} to ${nameOf(endId)}. ` +
-          (fallback
-            ? "The only known route has barriers you asked to avoid."
-            : "No route is known at all.")
+          (route?.entranceUnusable
+            ? "A path exists, but no entrance you can use has been recorded there."
+            : fallback
+              ? "The only known route has barriers you asked to avoid."
+              : "No route is known at all.")
       );
       return;
     }
@@ -214,13 +235,20 @@ export default function RoutePlannerPage() {
               </h2>
               <p>
                 There is no known route from {nameOf(startId)} to {nameOf(endId)}{" "}
-                that meets the needs of “
-                {outcome.profile === "shortest"
-                  ? "shortest route"
-                  : PROFILES[outcome.profile].label}
-                ”.
+                that meets the needs of “{profileLabel(outcome.profile)}”.
               </p>
-              {outcome.fallback ? (
+              {outcome.fallback?.entranceUnusable && outcome.fallback.entrance ? (
+                <>
+                  <p>
+                    A path reaches the building, but no entrance you can use has
+                    been recorded there.
+                  </p>
+                  <EntranceNote
+                    entrance={outcome.fallback.entrance}
+                    profile={outcome.profile}
+                  />
+                </>
+              ) : outcome.fallback ? (
                 <p>
                   A route does exist ({Math.round(outcome.fallback.distanceM)} m), but
                   it has barriers you asked to avoid. Select{" "}
@@ -260,20 +288,67 @@ export default function RoutePlannerPage() {
   );
 }
 
+/** How the arrival door looks to this traveller. */
+function EntranceNote({ entrance, profile }: { entrance: Entrance; profile: RouteProfile }) {
+  const a = assessEntrance(entrance, profile);
+  const s = entrance.survey;
+  const detail = [
+    s.doorType ? `${s.doorType} door` : null,
+    s.doorWidthM != null ? `${s.doorWidthM} m wide` : null,
+    s.stepFree === true ? "level threshold" : null,
+  ].filter(Boolean);
+
+  return (
+    <div
+      style={{
+        margin: "0 0 8px",
+        padding: "8px 10px",
+        borderRadius: 6,
+        background: "var(--color-surface)",
+        borderLeft: `4px solid ${
+          !a.verified
+            ? "var(--color-border)"
+            : a.passable
+              ? "var(--color-success)"
+              : "var(--color-error)"
+        }`,
+      }}
+    >
+      <strong>Arrive at:</strong> {entrance.id}
+      {detail.length > 0 && ` — ${detail.join(", ")}`}
+      {a.blockers.length > 0 && (
+        <div className="error-text" style={{ marginTop: 4 }}>
+          ⚠ {a.blockers.join("; ")}
+        </div>
+      )}
+      {a.warnings.length > 0 && (
+        <div style={{ marginTop: 4, color: "var(--color-text-secondary)" }}>
+          {a.warnings.join("; ")}
+        </div>
+      )}
+      {s.indoorHandoverId && (
+        <div style={{ marginTop: 4, color: "var(--color-text-secondary)" }}>
+          Indoor handover point: <strong>{s.indoorHandoverId}</strong>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function RouteResult({
   route,
   profile,
   fromName,
   toName,
 }: {
-  route: Route;
+  route: RouteToEntrance;
   profile: RouteProfile;
   fromName: string;
   toName: string;
 }) {
   const summary = describeRoute(route.edges, profile);
   const fullyVerified = summary.verifiedShare >= 1;
-  const label = profile === "shortest" ? "Shortest route" : PROFILES[profile].label;
+  const label = profileLabel(profile);
 
   return (
     <>
@@ -289,6 +364,8 @@ function RouteResult({
         <p style={{ margin: "0 0 8px", color: "var(--color-text-secondary)" }}>
           Planned for: {label}
         </p>
+
+        {route.entrance && <EntranceNote entrance={route.entrance} profile={profile} />}
 
         {summary.restAdvice && (
           <p

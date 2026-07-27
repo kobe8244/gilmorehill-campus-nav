@@ -41,6 +41,39 @@ export interface Graph {
   edges: GraphEdge[];
 }
 
+/** What the field survey recorded about a building entrance. */
+export interface EntranceSurvey {
+  /** The surveyor's overall verdict. `null` = not yet visited. */
+  accessible: boolean | null;
+  doorType: string | null;
+  /** No step at the threshold. */
+  stepFree: boolean | null;
+  stepCount: number | null;
+  ramp: boolean | null;
+  /** Clear opening width with the door fully open. */
+  doorWidthM: number | null;
+  /** Shared code agreed with the indoor navigation system. */
+  indoorHandoverId: string | null;
+  notes: string | null;
+}
+
+/**
+ * A way into one of the destinations — where an outdoor route ends and the
+ * indoor system takes over.
+ */
+export interface Entrance {
+  id: string;
+  /** Destination id this entrance serves. */
+  serves: string | null;
+  building: string | null;
+  lat: number | null;
+  lng: number | null;
+  /** Network node an outdoor route arrives at. */
+  nodeId: string | null;
+  osmHint: string | null;
+  survey: EntranceSurvey;
+}
+
 export interface Route {
   /** Node IDs from start to end. */
   nodeIds: string[];
@@ -169,6 +202,68 @@ export function findRoute(
       }
     }
   }
+
+  return null;
+}
+
+/** A route that ends at a specific, named way into the building. */
+export interface RouteToEntrance extends Route {
+  /** The entrance the route arrives at, if the destination has any mapped. */
+  entrance: Entrance | null;
+  /**
+   * True when a usable entrance existed but every one of them was rejected
+   * for this profile, so the route shown arrives at a door the traveller
+   * cannot use. The caller must say so rather than presenting it as success.
+   */
+  entranceUnusable: boolean;
+}
+
+/**
+ * Route to a destination by way of the best entrance its survey allows.
+ *
+ * A building is not a point. Routing to a fixed arrival node quietly assumes
+ * that every traveller comes in the same door, which is exactly the
+ * assumption this project exists to challenge: the step-free way in is
+ * usually not the main one. So each entrance is costed separately and the
+ * cheapest usable one wins.
+ *
+ * Falls back to the destination's default node when it has no mapped
+ * entrances at all, so the app still works before the entrance survey.
+ */
+export function findRouteToDestination(
+  graph: Graph,
+  startNodeId: string,
+  destinationNodeId: string,
+  entrances: Entrance[],
+  profile: RouteProfile,
+  assessEntrance: (e: Entrance, p: RouteProfile) => { passable: boolean }
+): RouteToEntrance | null {
+  const withNodes = entrances.filter((e) => e.nodeId != null);
+  if (withNodes.length === 0) {
+    const route = findRoute(graph, startNodeId, destinationNodeId, profile);
+    return route ? { ...route, entrance: null, entranceUnusable: false } : null;
+  }
+
+  const usable = withNodes.filter((e) => assessEntrance(e, profile).passable);
+
+  // Cheapest route among a set of candidate entrances.
+  const best = (candidates: Entrance[]): { route: Route; entrance: Entrance } | null => {
+    let winner: { route: Route; entrance: Entrance } | null = null;
+    for (const entrance of candidates) {
+      const route = findRoute(graph, startNodeId, entrance.nodeId!, profile);
+      if (!route) continue;
+      if (!winner || route.costM < winner.route.costM) winner = { route, entrance };
+    }
+    return winner;
+  };
+
+  const viaUsable = best(usable);
+  if (viaUsable) return { ...viaUsable.route, entrance: viaUsable.entrance, entranceUnusable: false };
+
+  // Nothing usable. Still return the best route we can, flagged, so the app
+  // can explain the problem instead of reporting a blank failure.
+  const viaAny = best(withNodes);
+  if (viaAny) return { ...viaAny.route, entrance: viaAny.entrance, entranceUnusable: true };
 
   return null;
 }

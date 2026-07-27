@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T03:24:07.977Z",
+  "generated": "2026-07-27T05:57:11.633Z",
   "attribution": "Base path geometry © OpenStreetMap contributors, ODbL. Accessibility attributes surveyed on site.",
   "destinations": [
     {
@@ -33,6 +33,388 @@
       "lng": -4.286847,
       "nodeId": "n28",
       "insideOf": null
+    }
+  ],
+  "entrances": [
+    {
+      "id": "main_building_4374873296",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.870986,
+      "lng": -4.288003,
+      "nodeId": "n236",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_4374873349",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871683,
+      "lng": -4.289711,
+      "nodeId": "n339",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_4374873352",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.87187,
+      "lng": -4.288521,
+      "nodeId": "n190",
+      "osmHint": "entrance=yes; level=0",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_4374873355",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871931,
+      "lng": -4.289312,
+      "nodeId": "n339",
+      "osmHint": "entrance=yes; level=0",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "james_watt_south_5171378847",
+      "serves": "james_watt_south",
+      "building": "James Watt Building (South)",
+      "lat": 55.870895,
+      "lng": -4.286847,
+      "nodeId": "n28",
+      "osmHint": "entrance=yes",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_5179610537",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871044,
+      "lng": -4.288658,
+      "nodeId": "n346",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_5179610553",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871159,
+      "lng": -4.289298,
+      "nodeId": "n231",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "university_library_7993589849",
+      "serves": "university_library",
+      "building": "University Library",
+      "lat": 55.87306,
+      "lng": -4.28875,
+      "nodeId": "n42",
+      "osmHint": "entrance=yes",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "university_library_7993589850",
+      "serves": "university_library",
+      "building": "University Library",
+      "lat": 55.873334,
+      "lng": -4.288416,
+      "nodeId": "n43",
+      "osmHint": "entrance=yes",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_11938383690",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871724,
+      "lng": -4.289694,
+      "nodeId": "n339",
+      "osmHint": "entrance=yes; level=0; note=Entrace is simplified, it is actually tucked under the staircase.",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_11938383691",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871543,
+      "lng": -4.289768,
+      "nodeId": "n337",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_11938383718",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871815,
+      "lng": -4.288125,
+      "nodeId": "n110",
+      "osmHint": "entrance=yes; level=0",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "university_library_7993589854",
+      "serves": "university_library",
+      "building": "University Library",
+      "lat": 55.873278,
+      "lng": -4.288261,
+      "nodeId": "n43",
+      "osmHint": "entrance=yes",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "university_library_7993589855",
+      "serves": "university_library",
+      "building": "University Library",
+      "lat": 55.873087,
+      "lng": -4.288314,
+      "nodeId": "n107",
+      "osmHint": "entrance=yes",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_7993590301",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871835,
+      "lng": -4.289343,
+      "nodeId": "n339",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_11938383694",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871605,
+      "lng": -4.288428,
+      "nodeId": "n349",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_11938383695",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871286,
+      "lng": -4.288558,
+      "nodeId": "n345",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "main_building_11938383697",
+      "serves": "main_building",
+      "building": "Main Building",
+      "lat": 55.871273,
+      "lng": -4.289246,
+      "nodeId": "n337",
+      "osmHint": "entrance=yes; level=1",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "hunterian_museum_11938383704",
+      "serves": "hunterian_museum",
+      "building": "Hunterian Museum",
+      "lat": 55.871671,
+      "lng": -4.288185,
+      "nodeId": "n347",
+      "osmHint": "access=yes; entrance=yes; level=1; wheelchair=no",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "hunterian_museum_11938383713",
+      "serves": "hunterian_museum",
+      "building": "Hunterian Museum",
+      "lat": 55.871724,
+      "lng": -4.288579,
+      "nodeId": "n350",
+      "osmHint": "access=yes; entrance=yes; level=1; wheelchair=no",
+      "survey": {
+        "accessible": null,
+        "doorType": null,
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "doorWidthM": null,
+        "indoorHandoverId": null,
+        "notes": null
+      }
     }
   ],
   "nodes": [

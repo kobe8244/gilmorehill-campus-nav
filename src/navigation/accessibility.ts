@@ -1,4 +1,4 @@
-import type { GraphEdge, SurveyAttributes } from "./pathfinding";
+import type { Entrance, GraphEdge, SurveyAttributes } from "./pathfinding";
 
 // Accessibility judgement, kept separate from the search algorithm so that
 // the criteria can be defended (and cited) independently of the code that
@@ -30,6 +30,20 @@ import type { GraphEdge, SurveyAttributes } from "./pathfinding";
  * them separately.
  */
 export type RouteProfile = "shortest" | "wheelchair" | "lowVision" | "limitedMobility";
+
+/**
+ * Entrance and door criteria — DfT (2021) Inclusive Mobility §11.2.
+ * A route that ends at a door the traveller cannot open has not got them
+ * anywhere, so entrances are judged on the same footing as the paths.
+ */
+export const DOOR = {
+  /** Clear opening width once open: the minimum acceptable. */
+  minClearWidthM: 0.9,
+  /** The width the guide asks for wherever it can be achieved. */
+  preferredClearWidthM: 1.2,
+  /** Thresholds should be level; this is the greatest acceptable rise. */
+  maxThresholdRiseMm: 10,
+};
 
 /**
  * The complete rule set for one profile.
@@ -445,4 +459,106 @@ export function describeRoute(
     restPoints,
     restAdvice,
   };
+}
+
+// --- Entrances --------------------------------------------------------
+
+/** Human-readable name of a profile, including the plain "shortest" mode. */
+export function profileLabel(profile: RouteProfile): string {
+  return profile === "shortest" ? "Shortest route" : PROFILES[profile].label;
+}
+
+/**
+ * Judge a building entrance for one profile, against Inclusive Mobility
+ * §11.2.
+ *
+ * The same three-state rule as the paths: an entrance nobody has visited is
+ * unverified, not assumed usable. A route that ends at a door the traveller
+ * cannot open has not taken them anywhere, so this decides whether a
+ * destination is genuinely reachable — not merely whether a path exists.
+ */
+export function assessEntrance(entrance: Entrance, profile: RouteProfile): Assessment {
+  const s = entrance.survey;
+  // "Surveyed" means somebody stood at the door and reached a verdict.
+  const verified = s.accessible !== null;
+  if (profile === "shortest") {
+    return { passable: true, verified, blockers: [], warnings: [] };
+  }
+
+  const rules = PROFILES[profile];
+  const blockers: string[] = [];
+  const warnings: string[] = [];
+
+  // The surveyor's own verdict outranks anything inferred from measurements:
+  // they were there and could see the whole situation. But `accessible` asks
+  // "step-free and usable by a wheelchair", so a `no` is a wheelchair verdict
+  // — it stops a wheelchair user and merely warns everyone else. Treating it
+  // as universal would tell a blind traveller a door is shut to them because
+  // it has a step.
+  if (s.accessible === false) {
+    if (rules.stepsBlock) blockers.push("recorded as not wheelchair accessible");
+    else warnings.push("recorded as not wheelchair accessible");
+  }
+
+  // OSM's `wheelchair=no` is a third-party claim, not a survey. It is worth
+  // repeating so nobody sets off expecting otherwise, but it never blocks a
+  // route on its own — that would let unverified data make the decision.
+  if (s.accessible === null && /wheelchair\s*=\s*no/.test(entrance.osmHint ?? "")) {
+    warnings.push("OpenStreetMap records this door as not wheelchair accessible — unconfirmed");
+  }
+
+  // §11.2: a revolving door is "not well suited to many people, including
+  // disabled people", and where one exists an alternative must be provided
+  // nearby. So the revolving door itself is never the accessible way in.
+  if (s.doorType === "revolving") {
+    if (rules.stepsBlock) blockers.push("revolving door");
+    else warnings.push("revolving door — look for the alternative door beside it");
+  }
+
+  // §11.2: manual doors are "difficult for many people to manage,
+  // particularly wheelchair users"; a door recorded as heavy exceeds the
+  // 15 N the guide allows.
+  if (s.doorType === "heavy") {
+    if (rules.stepsBlock) blockers.push("heavy door");
+    else warnings.push("heavy door — may need help to open");
+  }
+
+  // §11.2: thresholds should be level. Any step is non-compliant, but only
+  // a wheelchair is stopped outright by one.
+  if (s.stepFree === false && s.ramp !== true) {
+    const n = s.stepCount != null ? `${s.stepCount} step${s.stepCount === 1 ? "" : "s"}` : "a step";
+    if (rules.stepsBlock) blockers.push(`${n} at the door and no ramp`);
+    else warnings.push(`${n} at the door`);
+  }
+
+  // §11.2: 900 mm minimum clear width, 1200 mm preferred.
+  if (s.doorWidthM != null) {
+    if (rules.stepsBlock && s.doorWidthM < DOOR.minClearWidthM) {
+      blockers.push(`door only ${s.doorWidthM} m wide`);
+    } else if (s.doorWidthM < DOOR.preferredClearWidthM) {
+      warnings.push(`narrow door (${s.doorWidthM} m)`);
+    }
+  }
+
+  if (!verified) warnings.push("entrance not yet surveyed");
+
+  return { passable: blockers.length === 0, verified, blockers, warnings };
+}
+
+/** Entrances serving a destination, best first for the given profile. */
+export function rankEntrances(
+  entrances: Entrance[],
+  destinationId: string,
+  profile: RouteProfile
+): Entrance[] {
+  return entrances
+    .filter((e) => e.serves === destinationId && e.nodeId != null)
+    .map((e) => ({ e, a: assessEntrance(e, profile) }))
+    .sort((x, y) => {
+      // Usable before unusable; confirmed before merely unchecked.
+      if (x.a.passable !== y.a.passable) return x.a.passable ? -1 : 1;
+      if (x.a.verified !== y.a.verified) return x.a.verified ? -1 : 1;
+      return x.a.warnings.length - y.a.warnings.length;
+    })
+    .map(({ e }) => e);
 }
