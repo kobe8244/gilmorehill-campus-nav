@@ -33,6 +33,20 @@ const CONDITIONS = ["good", "uneven", "poor"];
 const KERBS = ["lowered", "flush", "raised", "none"];
 const DOORS = ["automatic", "manual", "heavy", "revolving"];
 
+// Entrance and door criteria — DfT (2021) Inclusive Mobility §11.2.
+// These replace the invented figures the entrance checks previously used,
+// so the entrance survey is judged by the same citable source as the paths.
+const DOOR = {
+  /** Clear width once open: 900 mm is the minimum acceptable. */
+  minClearWidthM: 0.9,
+  /** 1200 mm is the width the guide asks for wherever it can be achieved. */
+  preferredClearWidthM: 1.2,
+  /** Thresholds should be level; 10 mm is the maximum acceptable rise. */
+  maxThresholdRiseMm: 10,
+  /** Above 5 mm the threshold needs a bevelled edge. */
+  bevelRequiredAboveMm: 5,
+};
+
 // Shorthand from the printed field sheet, PER COLUMN — the same letter means
 // different things in different columns (`G` is good in `surface_condition`
 // but gravel in `surface`; `R` is raised in `dropped_kerb` but grass in
@@ -214,26 +228,55 @@ function checkEntrances() {
         "accessible entrance with no handover id — agree one with the indoor team"
       );
     }
-    if (row.accessible === "yes" && row.step_free === "no" && row.ramp !== "yes") {
-      problem(errors, file, id, "accessible", "marked accessible, but not step-free and no ramp");
-    }
-    // A revolving door cannot be used by most wheelchair users. Where one is
-    // the recorded accessible entrance, there is nearly always a side door
-    // that is the real answer — so this is a prompt to look again, not a
-    // verdict on the building.
+    // Inclusive Mobility §11.2: revolving doors "are not well suited to many
+    // people, including disabled people", and where one is installed an
+    // alternative hinged or sliding door MUST be provided close by. So a
+    // revolving door recorded as the accessible entrance means the real
+    // accessible entrance is the alternative, and has not been recorded.
     if (row.accessible === "yes" && row.door_type === "revolving") {
       problem(
         warnings, file, id, "door_type",
-        "revolving door marked accessible — is there a side door? record that one instead"
+        "revolving door marked accessible — §11.2 requires an alternative hinged " +
+          "or sliding door nearby; record that one instead"
       );
     }
-    // Clear opening width, not the door leaf. Below roughly 0.8 m a standard
-    // wheelchair will not pass however step-free the threshold is.
-    const dw = asNumber(row.door_width_m);
-    if (row.accessible === "yes" && dw !== null && dw < 0.8) {
+    // §11.2: manual doors "are difficult for many people to manage,
+    // particularly wheelchair users", and a door recorded as heavy is by
+    // definition beyond the 15 N the guide allows.
+    if (row.accessible === "yes" && row.door_type === "heavy") {
       problem(
-        errors, file, id, "door_width_m",
-        `${dw} m is too narrow for a wheelchair, but the entrance is marked accessible`
+        warnings, file, id, "door_type",
+        "heavy door marked accessible — §11.2 allows no more than 15 N to open; " +
+          "note in the comments whether it can be opened one-handed"
+      );
+    }
+
+    // Clear opening width once the door is open, not the door leaf.
+    // §11.2: 900 mm minimum acceptable, 1200 mm preferred.
+    const dw = asNumber(row.door_width_m);
+    if (dw !== null) {
+      if (row.accessible === "yes" && dw < DOOR.minClearWidthM) {
+        problem(
+          errors, file, id, "door_width_m",
+          `${dw} m is below the ${DOOR.minClearWidthM} m minimum clear width ` +
+            `(Inclusive Mobility §11.2), but the entrance is marked accessible`
+        );
+      } else if (dw < DOOR.preferredClearWidthM) {
+        problem(
+          warnings, file, id, "door_width_m",
+          `${dw} m — usable, but below the ${DOOR.preferredClearWidthM} m §11.2 asks for`
+        );
+      }
+    }
+
+    // §11.2: thresholds should be level; 10 mm is the maximum acceptable
+    // rise, and anything over 5 mm needs a bevelled edge. A recorded step at
+    // the threshold is therefore never compliant, however small.
+    if (row.step_free === "no" && row.accessible === "yes" && row.ramp !== "yes") {
+      problem(
+        errors, file, id, "step_free",
+        `threshold is not level and there is no ramp — §11.2 allows at most ` +
+          `${DOOR.maxThresholdRiseMm} mm rise, bevelled above ${DOOR.bevelRequiredAboveMm} mm`
       );
     }
     // `accessible` can arrive pre-filled from OSM's wheelchair tag, so it does

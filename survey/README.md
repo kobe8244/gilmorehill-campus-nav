@@ -179,7 +179,7 @@ with one 0.8 m pinch point is a 0.8 m path to a wheelchair user.
 | `step_free` | No step at the threshold? | `yes` / `no` |
 | `step_count` | Steps at the threshold | integer |
 | `ramp` | Ramp to the door? | `yes` / `no` |
-| `door_width_m` | Clear opening width | number |
+| `door_width_m` | **Clear** opening width, door fully open | number |
 | `lat`, `lng` | Coordinates | (pre-filled; correct if wrong) |
 | `nearest_node_id` | Path junction it connects to | (pre-filled) |
 | `indoor_handover_id` | **Shared ID agreed with the indoor team** | e.g. `MB-E1` |
@@ -188,6 +188,20 @@ with one 0.8 m pinch point is a 0.8 m path to a wheelchair user.
 
 Add rows for entrances OSM does not know about — hand-added rows are kept
 when the pipeline is re-run.
+
+**What the entrance columns are judged against** — Inclusive Mobility §11.2:
+
+| Measurement | Criterion |
+| ----------- | --------- |
+| `door_width_m` | **900 mm minimum**, 1200 mm preferred. Measure the clear opening with the door fully open, not the door leaf |
+| `step_free` at the threshold | Thresholds should be **level**. 10 mm is the maximum rise; above 5 mm it needs a bevelled edge — so any step you can see is already non-compliant |
+| `door_type` = `revolving` | Not suited to many disabled people. Where one exists an **alternative hinged or sliding door must be provided nearby** — find it, and record that door instead |
+| `door_type` = `heavy` | A door should open with no more than 15 N. If you cannot open it one-handed, say so in `notes` |
+| `door_type` = `automatic` | The preferred arrangement; should stay open at least 6 seconds |
+
+Recording a revolving or heavy door as `accessible=yes` will be flagged by
+`survey:check`, because in both cases the genuinely accessible way in is
+somewhere else and has not been recorded yet.
 
 ## Judging "accessible" — which thresholds to use
 
