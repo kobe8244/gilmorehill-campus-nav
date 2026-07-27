@@ -46,10 +46,9 @@ export default function RoutePlannerPage() {
         summary.verifiedShare < 1
           ? " Part of this route has not been surveyed yet, so please take care."
           : "";
-      const rest =
-        profile === "limitedMobility" && summary.restPoints > 0
-          ? ` There are ${summary.restPoints} places to rest along the way.`
-          : "";
+      // The rest advice is spoken because it is the part a user planning a
+      // long walk most needs to hear before setting off.
+      const rest = summary.restAdvice ? ` ${summary.restAdvice}` : "";
       speak(
         `Route found from ${nameOf(startId)} to ${nameOf(endId)}. ` +
           `${summary.metres} metres.${rest}${caution}`
@@ -291,10 +290,19 @@ function RouteResult({
           Planned for: {label}
         </p>
 
-        {profile === "limitedMobility" && summary.restPoints > 0 && (
-          <p style={{ margin: "0 0 8px", color: "var(--color-success)" }}>
-            {summary.restPoints} place{summary.restPoints === 1 ? "" : "s"} to rest
-            along the way.
+        {summary.restAdvice && (
+          <p
+            style={{
+              margin: "0 0 8px",
+              padding: "8px 10px",
+              borderRadius: 6,
+              background: "var(--color-surface)",
+              borderLeft: `4px solid ${
+                summary.restPoints > 0 ? "var(--color-success)" : "var(--color-error)"
+              }`,
+            }}
+          >
+            {summary.restAdvice}
           </p>
         )}
 

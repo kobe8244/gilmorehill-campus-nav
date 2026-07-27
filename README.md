@@ -81,6 +81,26 @@ on site is the first fieldwork task.
   The rules live in one reviewable table in `src/navigation/accessibility.ts`,
   separate from the search, so the criteria can be challenged and cited
   independently of the code that applies them.
+
+  **Every threshold is sourced**, from the Department for Transport's
+  *Inclusive Mobility* (2021), with the section cited against each value:
+
+  | Value | Figure | Source |
+  | ----- | ------ | ------ |
+  | Absolute minimum path width | 1000 mm (max 6 m of it) | §4.2 |
+  | Width for a wheelchair and a walker to pass | 1500 mm | §4.2 |
+  | Width for a long cane or assistance dog | 1100 mm | §3.2 |
+  | Width for two sticks, crutches or a frame | 900 mm | §3.2 |
+  | "Level" gradient | 1 in 60 (1.67%) | §4.3 |
+  | Gradient above which a slope is a ramp | 1 in 20 (5%) | §4.3 |
+  | Absolute maximum gradient | 1 in 12 (8.33%) | §4.3 |
+  | Distance without a rest — wheelchair, vision impaired | 150 m | §3.4 |
+  | Distance without a rest — stick and cane users | 50 m | §3.4 |
+  | Seating interval on a pedestrian route | 50 m | §4.5 |
+  | Maximum steps in a flight without a landing | 12 | §5.1 |
+
+  BS 8300-1:2018 remains the reference for building entrances and doors; the
+  entrance survey is judged against it separately.
 - Routes drawn along the real path geometry, not straight lines between pins
 - Unsurveyed stretches drawn **dashed** and reported as unverified — the app
   never claims a path is accessible when nobody has checked

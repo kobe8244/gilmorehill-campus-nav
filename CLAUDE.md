@@ -89,11 +89,17 @@ Every penalty multiplier MUST stay >= 1. The A* heuristic is straight-line
 distance, which is admissible only while cost never falls below true
 distance; a multiplier below 1 silently destroys the optimality guarantee.
 
-Thresholds in that table are working approximations of BS 8300-1:2018 /
-DfT Inclusive Mobility — they must be confirmed against the primary
-sources before being quoted academically. The penalty weights currently
-have no empirical basis and need either literature support or user
-preference data.
+Thresholds in that table are SOURCED and citable: every one comes from
+DfT (2021) *Inclusive Mobility*, with the section number in a comment
+beside it (§3.2 widths per user group, §3.4 distance without a rest, §4.2
+footway widths, §4.3 gradients, §4.5 seating intervals, §5.1 steps per
+flight). Do not change a threshold without a citation to replace it.
+BS 8300-1:2018 governs building entrances and doors only — that PDF is
+FileOpen/DRM protected and cannot be read programmatically.
+
+The penalty MULTIPLIERS are a separate matter: they still have no
+empirical basis and need literature support or user preference data. The
+user has decided to leave them as they are for now.
 
 ## Project Structure
 scripts/

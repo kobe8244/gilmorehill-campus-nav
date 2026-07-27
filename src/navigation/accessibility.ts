@@ -4,12 +4,20 @@ import type { GraphEdge, SurveyAttributes } from "./pathfinding";
 // the criteria can be defended (and cited) independently of the code that
 // applies them.
 //
-// IMPORTANT — the threshold figures below are working values taken from
-// commonly quoted summaries of the standards. Confirm each against the
-// primary source before quoting it in the dissertation:
-//   • BS 8300-1:2018 — design of an accessible external environment
-//     (available through the University Library's BSOL subscription)
-//   • Inclusive Mobility (UK Department for Transport) — free PDF
+// SOURCE — every threshold below is taken from:
+//
+//   Department for Transport (2021) *Inclusive Mobility: A Guide to Best
+//   Practice on Access to Pedestrian and Transport Infrastructure*.
+//   London: DfT. Section numbers are cited against each value.
+//
+// That guide governs the *external pedestrian* environment, which is what
+// this project routes over. BS 8300-1:2018 remains the reference for
+// building entrances and doors, and the entrance survey is judged against
+// it separately.
+//
+// Where the guide gives a figure per user group, that figure is applied to
+// the matching profile rather than averaged — the whole point of modelling
+// profiles separately is that these numbers genuinely differ.
 
 /**
  * Who the route is being planned for.
@@ -56,6 +64,13 @@ export interface ProfileRules {
   comfortGradientPct: number;
   /** A raised kerb with no dropped crossing makes the segment impassable. */
   raisedKerbBlocks: boolean;
+  /**
+   * How far this group can be expected to travel before needing to rest,
+   * in metres. Inclusive Mobility §3.4 gives these per user group; they are
+   * recommendations averaged over a population, not hard limits, so a route
+   * longer than this is reported rather than rejected.
+   */
+  maxDistanceWithoutRestM: number | null;
 
   penalties: {
     /** Nobody has surveyed this segment yet. */
@@ -82,6 +97,28 @@ export interface ProfileRules {
 /** Surfaces that are hard going even in good condition. */
 const DIFFICULT_SURFACES = ["gravel", "grass", "cobbles", "sett"];
 
+/**
+ * Seating should appear at intervals of no more than this along a commonly
+ * used pedestrian route — Inclusive Mobility §4.5.
+ */
+export const SEATING_INTERVAL_M = 50;
+
+/**
+ * A flight of steps should contain no more than this many steps before a
+ * landing — Inclusive Mobility §5.1. A longer flight is non-compliant and
+ * worth reporting even to a profile that can use steps.
+ */
+export const MAX_STEPS_PER_FLIGHT = 12;
+
+/**
+ * Gradient reference points, all from Inclusive Mobility §4.3, expressed as
+ * percentages because that is what the survey records.
+ *   1 in 60 ≈ 1.67%  — at or below this the route counts as "level"
+ *   1 in 20 = 5%     — steeper than this is defined as a ramp
+ *   1 in 12 ≈ 8.33%  — the absolute maximum as a general rule
+ */
+export const GRADIENT = { level: 1.67, ramp: 5, absoluteMax: 8.33 };
+
 export const PROFILES: Record<Exclude<RouteProfile, "shortest">, ProfileRules> = {
   /**
    * Wheelchair user. Steps are absolute barriers; width and gradient decide
@@ -94,11 +131,16 @@ export const PROFILES: Record<Exclude<RouteProfile, "shortest">, ProfileRules> =
     description: "Avoids all steps. Needs width, gentle gradients and dropped kerbs.",
     stepsBlock: true,
     stepsNeedHandrail: false,
+    // §4.2: 1000 mm is the absolute minimum, and only past an obstacle for
+    // no more than 6 m. 1500 mm lets a wheelchair user and a walker pass;
+    // 2000 mm — two wheelchairs — is the figure for normal circumstances.
     minWidthM: 1.0,
     comfortWidthM: 1.5,
-    maxGradientPct: 8,
-    comfortGradientPct: 5,
+    // §4.3: 1 in 12 absolute maximum, 1 in 20 before it counts as a ramp.
+    maxGradientPct: GRADIENT.absoluteMax,
+    comfortGradientPct: GRADIENT.ramp,
     raisedKerbBlocks: true,
+    maxDistanceWithoutRestM: 150, // §3.4
     penalties: {
       unverified: 1.3,
       narrow: 1.4,
@@ -125,11 +167,16 @@ export const PROFILES: Record<Exclude<RouteProfile, "shortest">, ProfileRules> =
     description: "Prefers tactile paving, even surfaces and well-lit paths. Steps are acceptable.",
     stepsBlock: false,
     stepsNeedHandrail: false,
-    minWidthM: null,
-    comfortWidthM: null,
+    // §3.2: a long cane or assistance dog needs 1100 mm; being guided needs
+    // 1200 mm. Width is a real requirement here, just a smaller one.
+    minWidthM: 1.1,
+    comfortWidthM: 1.2,
+    // Gradient is not the barrier for this group, but a slope steep enough
+    // to be a ramp is still worth mentioning.
     maxGradientPct: null,
-    comfortGradientPct: 12,
+    comfortGradientPct: GRADIENT.absoluteMax,
     raisedKerbBlocks: false,
+    maxDistanceWithoutRestM: 150, // §3.4
     penalties: {
       unverified: 1.3,
       narrow: 1,
@@ -157,11 +204,20 @@ export const PROFILES: Record<Exclude<RouteProfile, "shortest">, ProfileRules> =
     description: "Avoids steep climbs and steps without handrails. Prefers routes with places to rest.",
     stepsBlock: false,
     stepsNeedHandrail: true,
-    minWidthM: 0.8,
+    // §3.2: a stick user needs 750 mm; two sticks, crutches or a walking
+    // frame need 900 mm. The larger figure is used, since the profile has to
+    // serve the harder case.
+    minWidthM: 0.9,
     comfortWidthM: 1.2,
-    maxGradientPct: 10,
-    comfortGradientPct: 4,
+    // §4.3 applies to everyone: 1 in 12 absolute maximum, 1 in 20 before a
+    // slope becomes a ramp. The guide notes that a shallow slope running for
+    // a long distance is itself an obstacle for this group.
+    maxGradientPct: GRADIENT.absoluteMax,
+    comfortGradientPct: GRADIENT.ramp,
     raisedKerbBlocks: false,
+    // §3.4: walking stick and cane users — 50 m, the shortest of any group
+    // and shorter than five of the six journeys this app offers.
+    maxDistanceWithoutRestM: 50,
     penalties: {
       unverified: 1.3,
       narrow: 1.1,
@@ -248,6 +304,11 @@ export function assess(edge: GraphEdge, profile: RouteProfile = "wheelchair"): A
     } else {
       warnings.push(count);
     }
+    // §5.1: a flight should have no more than 12 steps before a landing.
+    // Worth saying even to someone who can use steps.
+    if (s.stepCount != null && s.stepCount > MAX_STEPS_PER_FLIGHT && !rules.stepsBlock) {
+      warnings.push(`long flight of ${s.stepCount} steps with no landing`);
+    }
   }
 
   if (s.widthM != null) {
@@ -332,10 +393,25 @@ export function edgeCost(edge: GraphEdge, profile: RouteProfile): number | null 
  * guidance. Written to be read aloud, so it avoids symbols and
  * abbreviations that a screen reader would mangle.
  */
+export interface RouteSummary {
+  metres: number;
+  verifiedShare: number;
+  warnings: string[];
+  /** Segments along the route where a rest point was recorded. */
+  restPoints: number;
+  /**
+   * Set when the route is longer than this group can be expected to manage
+   * without a rest (Inclusive Mobility §3.4). Advisory, not a refusal —
+   * the figure is a population average, and the person knows their own legs
+   * better than a guide does.
+   */
+  restAdvice: string | null;
+}
+
 export function describeRoute(
   edges: GraphEdge[],
   profile: RouteProfile = "wheelchair"
-): { metres: number; verifiedShare: number; warnings: string[]; restPoints: number } {
+): RouteSummary {
   const metres = edges.reduce((sum, e) => sum + e.lengthM, 0);
   const verifiedMetres = edges
     .filter((e) => isSurveyed(e))
@@ -347,10 +423,26 @@ export function describeRoute(
     for (const w of assess(edge, profile).warnings) seen.add(w.replace(/\s*\([^)]*\)/, ""));
   }
 
+  const restPoints = edges.filter((e) => e.survey.seatingNearby === true).length;
+
+  let restAdvice: string | null = null;
+  const limit = profile === "shortest" ? null : PROFILES[profile].maxDistanceWithoutRestM;
+  if (limit != null && metres > limit) {
+    restAdvice =
+      restPoints > 0
+        ? `This route is ${Math.round(metres)} metres. The recommended distance ` +
+          `without a rest is ${limit} metres, and ${restPoints} rest ` +
+          `${restPoints === 1 ? "point was" : "points were"} recorded along the way.`
+        : `This route is ${Math.round(metres)} metres. The recommended distance ` +
+          `without a rest is ${limit} metres, and no rest points have been ` +
+          `recorded along it.`;
+  }
+
   return {
     metres: Math.round(metres),
     verifiedShare: metres > 0 ? verifiedMetres / metres : 0,
     warnings: [...seen],
-    restPoints: edges.filter((e) => e.survey.seatingNearby === true).length,
+    restPoints,
+    restAdvice,
   };
 }
