@@ -67,7 +67,7 @@ on site is the first fieldwork task.
 
 ## Features
 
-- Interactive campus map (Google Maps) showing the surveyed network
+- Interactive campus map (Leaflet + OpenStreetMap) showing the surveyed network
 - **A\*** routing with an admissible straight-line heuristic
 - **Four routing profiles**, because "accessible" is not one thing:
 
@@ -111,15 +111,28 @@ on site is the first fieldwork task.
 ## Tech Stack
 
 - React 18 + Vite (TypeScript)
-- Google Maps JavaScript API (`@react-google-maps/api`)
+- Leaflet with OpenStreetMap tiles — **no API key required**
 - A\* pathfinding over an OpenStreetMap-derived campus graph
 - Web Speech API for voice guidance
 - Node scripts + the Overpass API for the survey pipeline
 
+## Try it
+
+The app is published here, and works on a phone:
+
+**https://kobe8244.github.io/gilmorehill-campus-nav/**
+
+The field survey kit is served alongside it:
+[survey map](https://kobe8244.github.io/gilmorehill-campus-nav/survey/basemap.html) ·
+[printable field sheet](https://kobe8244.github.io/gilmorehill-campus-nav/survey/field-sheet.html)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) 18 or later
-- A Google Maps API key with the **Maps JavaScript API** enabled
+
+That is the whole list. **No API key, no account, no billing** — the map uses
+Leaflet with OpenStreetMap tiles, the same source the path network itself
+comes from, so anyone can clone this and see it working immediately.
 
 ## Getting Started
 
@@ -127,23 +140,8 @@ on site is the first fieldwork task.
 git clone https://github.com/kobe8244/gilmorehill-campus-nav.git
 cd gilmorehill-campus-nav
 npm install
-
-cp .env.example .env      # then edit: VITE_GOOGLE_MAPS_API_KEY=your_key_here
-
 npm run dev               # http://localhost:5173
 ```
-
-### Google Maps API key setup
-
-1. In the Google Cloud Console, enable **Maps JavaScript API**.
-2. Under **Credentials**, restrict the key:
-   - **Application restrictions → Websites**, add `http://localhost:5173/*`
-   - **API restrictions → Restrict key → Maps JavaScript API**
-3. Enable billing on the project (Google requires it even within the free
-   monthly credit).
-
-> `.env` is git-ignored so your key is never committed. `.env.example` is the
-> committed template.
 
 ## Available Scripts
 

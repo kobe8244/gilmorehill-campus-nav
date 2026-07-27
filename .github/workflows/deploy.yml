@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+
+# Builds the navigation app and publishes it, together with the survey kit,
+# so the whole project can be opened from a phone without a laptop, a build
+# step, or an API key.
+on:
+  push:
+    branches: [main]
+  # Lets the site be republished by hand from the Actions tab.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; the newest push wins.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Type errors must fail the deploy rather than reaching the site.
+      - run: npm run build
+
+      # The survey kit is plain static files and is served alongside the app,
+      # so basemap.html keeps working at the same URL it always had.
+      - name: Add the survey kit to the site
+        run: |
+          cp -r survey dist/survey
+          touch dist/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

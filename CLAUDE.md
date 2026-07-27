@@ -22,7 +22,7 @@ hand-edit the generated data.
 
 ## Tech Stack
 - React + Vite (TypeScript) — browser-based web app
-- Google Maps JavaScript API (@react-google-maps/api)
+- Leaflet + OpenStreetMap tiles (no API key — anyone can run this)
 - A* pathfinding with an admissible straight-line heuristic
 - GeoJSON/OSM path network + field-surveyed accessibility attributes
 - Voice guidance via the Web Speech API (window.speechSynthesis)
@@ -123,8 +123,12 @@ src/
 - Accessibility props on all interactive elements
 
 ## Local Development
-- Requires the Maps JavaScript API enabled in Google Cloud Console
-- API key is read from `.env` (VITE_GOOGLE_MAPS_API_KEY); see `.env.example`
+- No API key or account needed; the map is Leaflet + OSM tiles. Keep it that
+  way — a marker or examiner must be able to clone and run this immediately.
+- Pushing to main auto-deploys to GitHub Pages via
+  .github/workflows/deploy.yml, which publishes the built app AND copies
+  survey/ alongside it, so basemap.html keeps its URL.
+- `vite.config.ts` sets `base` to the repo name for production builds only.
 - `npm install` then `npm run dev` (Vite dev server on http://localhost:5173)
 - `npm run build` type-checks and produces a production bundle in `dist/`
 - Node lives at C:\Program Files\nodejs on the author's machine and may
