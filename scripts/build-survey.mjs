@@ -560,6 +560,7 @@ for (const f of surveySegments) {
     to_id: p.to,
     length_m: p.length_m,
     highway: p.highway,
+    passable: "",
     step_free: p.highway === "steps" ? "no" : "",
     step_count: "",
     ramp: "",
@@ -768,6 +769,7 @@ const appNetwork = {
       tier: tierOf(p.segment_id),
       coords: f.geometry.coordinates.map(([lng, lat]) => [round6(lng), round6(lat)]),
       survey: {
+        passable: bool(s.passable),
         stepFree: bool(s.step_free),
         stepCount: num(s.step_count),
         ramp: bool(s.ramp),

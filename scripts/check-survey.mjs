@@ -137,7 +137,7 @@ function checkSegments() {
     const id = row.segment_id || "(no id)";
     for (const col of SEGMENT_COLUMNS) row[col] = normalise(row[col]);
 
-    for (const col of ["step_free", "ramp", "handrail", "tactile_paving", "lit", "seating_nearby"]) {
+    for (const col of ["passable", "step_free", "ramp", "handrail", "tactile_paving", "lit", "seating_nearby"]) {
       if (row[col]) row[col] = checkEnum(file, id, col, row[col], YES_NO, SHORTHAND.yesno);
     }
     if (row.surface)

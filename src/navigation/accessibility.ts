@@ -296,6 +296,17 @@ function hasSteps(edge: GraphEdge): boolean {
  */
 export function assess(edge: GraphEdge, profile: RouteProfile = "wheelchair"): Assessment {
   const verified = isSurveyed(edge);
+
+  // A way recorded as closed is closed to everyone, so this is checked
+  // before the profile is even consulted — including for the unfiltered
+  // "shortest" profile, which switches off accessibility criteria but cannot
+  // switch off a locked gate. Conflating this with `stepFree=false` sent
+  // blind travellers down paths that are not there, since steps are no
+  // barrier to them and a blocked path is.
+  if (edge.survey.passable === false) {
+    return { passable: false, verified, blockers: ["no way through"], warnings: [] };
+  }
+
   if (profile === "shortest") {
     return { passable: true, verified, blockers: [], warnings: [] };
   }
@@ -372,6 +383,7 @@ export function assess(edge: GraphEdge, profile: RouteProfile = "wheelchair"): A
  * Returns null when the segment must not be used at all by this profile.
  */
 export function edgeCost(edge: GraphEdge, profile: RouteProfile): number | null {
+  if (edge.survey.passable === false) return null;
   if (profile === "shortest") return edge.lengthM;
 
   const rules = PROFILES[profile];

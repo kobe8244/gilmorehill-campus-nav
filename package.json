@@ -12,7 +12,8 @@
     "survey:plan": "node scripts/field-plan.mjs",
     "survey:check": "node scripts/check-survey.mjs",
     "survey": "npm run survey:fetch && npm run survey:build && npm run survey:plan",
-    "survey:import": "node scripts/build-survey.mjs"
+    "survey:import": "node scripts/build-survey.mjs",
+    "survey:report": "esbuild scripts/report.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/report.mjs --log-level=error && node node_modules/.cache/report.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

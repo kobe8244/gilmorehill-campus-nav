@@ -9,6 +9,13 @@ export interface GraphNode {
 // Accessibility attributes collected during the field survey. `null` means
 // "not surveyed yet" and is deliberately distinct from a measured `false`.
 export interface SurveyAttributes {
+  /**
+   * False when the way is closed to everyone — a locked gate, a dead end,
+   * building works. Kept separate from `stepFree`, which reports only that
+   * there are steps: steps stop a wheelchair user but not a blind one,
+   * whereas a blocked path stops both.
+   */
+  passable: boolean | null;
   stepFree: boolean | null;
   stepCount: number | null;
   ramp: boolean | null;

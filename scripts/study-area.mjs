@@ -87,6 +87,13 @@ export const SEGMENT_COLUMNS = [
   "to_id",
   "length_m",
   "highway",
+  // Whether there is any way through here at all. `no` means the way is
+  // closed to everybody — a locked gate, a dead end, building works.
+  // Deliberately separate from `step_free`, which says only that there are
+  // steps: steps stop a wheelchair user but not someone with low vision,
+  // whereas a blocked path stops everyone. Recording both meanings in one
+  // column routed blind travellers down paths that do not exist.
+  "passable",
   "step_free",
   "step_count",
   "ramp",
@@ -113,6 +120,7 @@ export const SEGMENT_COLUMNS = [
 // Columns the surveyor fills in — used to detect whether a row already holds
 // field data so that re-running the build never destroys it.
 export const SEGMENT_FIELD_COLUMNS = [
+  "passable",
   "step_free",
   "step_count",
   "ramp",
