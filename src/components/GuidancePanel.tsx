@@ -8,7 +8,7 @@ import {
   type GuidanceStep,
   type RouteProgress,
 } from "../navigation/guidance";
-import { useGeolocation } from "../hooks/useGeolocation";
+import type { Position } from "../hooks/useGeolocation";
 import { useSettings } from "../settings/SettingsContext";
 import { useTTS } from "../hooks/useTTS";
 
@@ -25,21 +25,31 @@ interface Props {
   route: Route;
   profile: RouteProfile;
   destinationName: string;
-  /** Reported upward so the map can draw the traveller's position. */
-  onPosition?: (p: { lat: number; lng: number; accuracyM: number } | null) => void;
+  /** Live position, owned by the page so routing and the map share one source. */
+  position: Position | null;
+  error: string | null;
+  tracking: boolean;
+  supported: boolean;
+  start: () => void;
+  stop: () => void;
 }
 
-export default function GuidancePanel({ route, profile, destinationName, onPosition }: Props) {
-  const { position, error, tracking, supported, start, stop } = useGeolocation();
+export default function GuidancePanel({
+  route,
+  profile,
+  destinationName,
+  position,
+  error,
+  tracking,
+  supported,
+  start,
+  stop,
+}: Props) {
   const settings = useSettings();
   const { speak } = useTTS();
 
   const steps: GuidanceStep[] = buildGuidance(route, destinationName, profile);
   const progress: RouteProgress | null = position ? locateOnRoute(route, steps, position) : null;
-
-  useEffect(() => {
-    onPosition?.(position);
-  }, [position, onPosition]);
 
   // Speak each instruction once, as it comes within range. Tracking the last
   // spoken index stops the same turn being repeated on every GPS tick.

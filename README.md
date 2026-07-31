@@ -105,6 +105,10 @@ on site is the first fieldwork task.
 - Unsurveyed stretches drawn **dashed** and reported as unverified — the app
   never claims a path is accessible when nobody has checked
 - Honest failure: when no step-free route exists it says so, and explains why
+- **Navigates from wherever you are**: your position is projected onto the
+  nearest path you can use and that path is split there, so the route begins
+  under your feet rather than at some junction nearby. Outside the surveyed
+  area it says so plainly instead of guessing.
 - **Turn-by-turn guidance** with live positioning: each instruction carries what
   the survey found on the stretch ahead — "twenty steps, with a handrail", "a
   slope of 7 percent", "a place to rest" — spoken as it approaches

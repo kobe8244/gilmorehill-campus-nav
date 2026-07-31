@@ -13,6 +13,8 @@ import {
   type RouteProfile,
 } from "../navigation/accessibility";
 import { useTTS } from "../hooks/useTTS";
+import { useGeolocation } from "../hooks/useGeolocation";
+import { snapToNetwork, withVirtualStart, coverageFor, YOU_ARE_HERE } from "../navigation/snap";
 import { useSettings } from "../settings/SettingsContext";
 import GuidancePanel from "../components/GuidancePanel";
 import CampusMap from "../components/CampusMap";
@@ -26,7 +28,9 @@ type Outcome =
   | { kind: "noRoute" };
 
 export default function RoutePlannerPage() {
-  const [startId, setStartId] = useState(destinations[0].id);
+  // "__here" means the traveller's own position rather than a building.
+  const HERE = "__here";
+  const [startId, setStartId] = useState<string>(destinations[0].id);
   // Default to a pair that is genuinely a journey across campus.
   const [endId, setEndId] = useState(destinations[2].id);
   const settings = useSettings();
@@ -35,7 +39,8 @@ export default function RoutePlannerPage() {
   const [profile, setProfile] = useState<RouteProfile>(settings.defaultProfile);
   const [outcome, setOutcome] = useState<Outcome>({ kind: "none" });
   const { speak: rawSpeak } = useTTS();
-  const [here, setHere] = useState<{ lat: number; lng: number; accuracyM: number } | null>(null);
+  const geo = useGeolocation();
+  const here = geo.position;
 
   // One place decides whether the app talks, so the setting cannot be
   // bypassed by a call site that forgot about it.
@@ -44,26 +49,39 @@ export default function RoutePlannerPage() {
     [settings.voiceGuidance, rawSpeak]
   );
 
-  const nameOf = (id: string) => destinations.find((d) => d.id === id)?.name ?? id;
+  const nameOf = (id: string) =>
+    id === HERE ? "your location" : (destinations.find((d) => d.id === id)?.name ?? id);
   const nodeOf = (id: string) => destinations.find((d) => d.id === id)?.nodeId;
 
   const progress = surveyProgress();
   const reset = () => setOutcome({ kind: "none" });
 
+  // Where the traveller is on the network, when starting from their own
+  // position. Recomputed as the position updates so the route always begins
+  // where they actually are, not at the nearest junction.
+  const snap = startId === HERE && here ? snapToNetwork(campusGraph, here, profile) : null;
+  const coverage = startId === HERE ? coverageFor(snap) : null;
+
   // Route to the destination by way of whichever entrance this traveller can
   // actually use, rather than to a single fixed arrival point.
   const routeTo = (dest: string, p: RouteProfile) => {
-    const from = nodeOf(startId);
     const to = nodeOf(dest);
-    if (!from || !to) return null;
-    return findRouteToDestination(
-      campusGraph,
-      from,
-      to,
-      entrancesFor(dest),
-      p,
-      assessEntrance
-    );
+    if (!to) return null;
+
+    if (startId === HERE) {
+      if (!snap || !coverage?.covered) return null;
+      // Splitting the path the traveller stands on gives a route that starts
+      // under their feet rather than at a junction some way off.
+      const graph = withVirtualStart(campusGraph, snap);
+      const fromNode = graph.nodes.some((n) => n.id === YOU_ARE_HERE)
+        ? YOU_ARE_HERE
+        : snap.edge.from;
+      return findRouteToDestination(graph, fromNode, to, entrancesFor(dest), p, assessEntrance);
+    }
+
+    const from = nodeOf(startId);
+    if (!from) return null;
+    return findRouteToDestination(campusGraph, from, to, entrancesFor(dest), p, assessEntrance);
   };
 
   const handleFindRoute = () => {
@@ -107,6 +125,8 @@ export default function RoutePlannerPage() {
   };
 
   const swap = () => {
+    // The traveller's own position can only ever be a starting point.
+    if (startId === HERE) return;
     setStartId(endId);
     setEndId(startId);
     reset();
@@ -123,14 +143,18 @@ export default function RoutePlannerPage() {
           onChange={(e) => {
             setStartId(e.target.value);
             reset();
+            if (e.target.value === HERE && !geo.tracking) geo.start();
           }}
         >
+          <option value={HERE}>📍 My location</option>
           {destinations.map((d) => (
             <option key={d.id} value={d.id}>
               {d.name}
             </option>
           ))}
         </select>
+
+        {startId === HERE && <LocationStatus geo={geo} coverage={coverage} />}
 
         <label htmlFor="to-select">To</label>
         <select
@@ -152,6 +176,7 @@ export default function RoutePlannerPage() {
           className="btn"
           type="button"
           onClick={swap}
+          disabled={startId === HERE}
           style={{ background: "var(--color-primary-light)", marginTop: 12 }}
         >
           ⇅ Swap start and destination
@@ -223,10 +248,16 @@ export default function RoutePlannerPage() {
           className="btn"
           type="button"
           onClick={handleFindRoute}
-          disabled={startId === endId}
+          disabled={startId === endId || (startId === HERE && !coverage?.covered)}
           aria-label="Find route between the selected locations"
         >
-          {startId === endId ? "Choose two different places" : "Find Route"}
+          {startId === endId
+            ? "Choose two different places"
+            : startId === HERE && !here
+              ? "Waiting for your position…"
+              : startId === HERE && !coverage?.covered
+                ? "Outside the surveyed area"
+                : "Find Route"}
         </button>
 
         {/* aria-live so a screen-reader user hears the result without
@@ -238,8 +269,7 @@ export default function RoutePlannerPage() {
               profile={outcome.profile}
               fromName={nameOf(startId)}
               toName={nameOf(endId)}
-              here={here}
-              onPosition={setHere}
+              geo={geo}
             />
           )}
 
@@ -355,15 +385,13 @@ function RouteResult({
   profile,
   fromName,
   toName,
-  here,
-  onPosition,
+  geo,
 }: {
   route: RouteToEntrance;
   profile: RouteProfile;
   fromName: string;
   toName: string;
-  here: { lat: number; lng: number; accuracyM: number } | null;
-  onPosition: (p: { lat: number; lng: number; accuracyM: number } | null) => void;
+  geo: ReturnType<typeof useGeolocation>;
 }) {
   const summary = describeRoute(route.edges, profile);
   const fullyVerified = summary.verifiedShare >= 1;
@@ -372,7 +400,7 @@ function RouteResult({
   return (
     <>
       <div className="map-preview">
-        <CampusMap route={route} profile={profile} here={here} />
+        <CampusMap route={route} profile={profile} here={geo.position} />
       </div>
       <div className="result-box">
         <h2 className="result-title">Route found</h2>
@@ -427,8 +455,62 @@ function RouteResult({
         route={route}
         profile={profile}
         destinationName={toName}
-        onPosition={onPosition}
+        position={geo.position}
+        error={geo.error}
+        tracking={geo.tracking}
+        supported={geo.supported}
+        start={geo.start}
+        stop={geo.stop}
       />
     </>
+  );
+}
+
+/** Whether the traveller's position is known, and whether we cover it. */
+function LocationStatus({
+  geo,
+  coverage,
+}: {
+  geo: ReturnType<typeof useGeolocation>;
+  coverage: { covered: boolean; distanceM: number; message: string } | null;
+}) {
+  if (!geo.supported) {
+    return (
+      <p className="error-text" style={{ marginTop: 8 }}>
+        This browser cannot report your position. Choose a starting building instead.
+      </p>
+    );
+  }
+  if (geo.error) {
+    return (
+      <p className="error-text" style={{ marginTop: 8 }}>
+        {geo.error}
+      </p>
+    );
+  }
+  if (!geo.position) {
+    return (
+      <p style={{ marginTop: 8, color: "var(--color-text-secondary)" }}>
+        Finding your position… allow location access when the browser asks.
+      </p>
+    );
+  }
+  return (
+    <div
+      style={{
+        marginTop: 8,
+        padding: "8px 10px",
+        borderRadius: 6,
+        background: "var(--color-surface)",
+        borderLeft: `4px solid ${
+          coverage?.covered ? "var(--color-success)" : "var(--color-error)"
+        }`,
+      }}
+    >
+      <div style={{ fontSize: 15, color: "var(--color-text-secondary)" }}>
+        Position accurate to about {Math.round(geo.position.accuracyM)} m
+      </div>
+      {coverage?.message && <div style={{ marginTop: 4 }}>{coverage.message}</div>}
+    </div>
   );
 }

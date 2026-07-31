@@ -112,7 +112,8 @@ src/
   pages/           # MapPage, RoutePlannerPage, SettingsPage
   components/      # Reusable UI (TabBar, CampusMap)
   navigation/      # pathfinding.ts (A*), accessibility.ts (thresholds/cost),
-                   # guidance.ts (turn-by-turn from route geometry + survey)
+                   # guidance.ts (turn-by-turn), snap.ts (join a GPS fix to
+                   # the network by splitting the nearest usable path)
   settings/        # SettingsContext.tsx — persisted user preferences
   data/            # campusGraph.ts + generated campusNetwork.json
   hooks/           # useTTS (Web Speech API) and other hooks
