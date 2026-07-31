@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { campusGraph, destinations, entrancesFor, surveyProgress } from "../data/campusGraph";
 import {
   findRouteToDestination,
@@ -13,6 +13,8 @@ import {
   type RouteProfile,
 } from "../navigation/accessibility";
 import { useTTS } from "../hooks/useTTS";
+import { useSettings } from "../settings/SettingsContext";
+import GuidancePanel from "../components/GuidancePanel";
 import CampusMap from "../components/CampusMap";
 
 type Outcome =
@@ -27,9 +29,20 @@ export default function RoutePlannerPage() {
   const [startId, setStartId] = useState(destinations[0].id);
   // Default to a pair that is genuinely a journey across campus.
   const [endId, setEndId] = useState(destinations[2].id);
-  const [profile, setProfile] = useState<RouteProfile>("wheelchair");
+  const settings = useSettings();
+  // Starts on the traveller's saved preference; changing it here is a
+  // one-off for this journey and does not overwrite the setting.
+  const [profile, setProfile] = useState<RouteProfile>(settings.defaultProfile);
   const [outcome, setOutcome] = useState<Outcome>({ kind: "none" });
-  const { speak } = useTTS();
+  const { speak: rawSpeak } = useTTS();
+  const [here, setHere] = useState<{ lat: number; lng: number; accuracyM: number } | null>(null);
+
+  // One place decides whether the app talks, so the setting cannot be
+  // bypassed by a call site that forgot about it.
+  const speak = useCallback(
+    (text: string) => { if (settings.voiceGuidance) rawSpeak(text); },
+    [settings.voiceGuidance, rawSpeak]
+  );
 
   const nameOf = (id: string) => destinations.find((d) => d.id === id)?.name ?? id;
   const nodeOf = (id: string) => destinations.find((d) => d.id === id)?.nodeId;
@@ -225,6 +238,8 @@ export default function RoutePlannerPage() {
               profile={outcome.profile}
               fromName={nameOf(startId)}
               toName={nameOf(endId)}
+              here={here}
+              onPosition={setHere}
             />
           )}
 
@@ -340,11 +355,15 @@ function RouteResult({
   profile,
   fromName,
   toName,
+  here,
+  onPosition,
 }: {
   route: RouteToEntrance;
   profile: RouteProfile;
   fromName: string;
   toName: string;
+  here: { lat: number; lng: number; accuracyM: number } | null;
+  onPosition: (p: { lat: number; lng: number; accuracyM: number } | null) => void;
 }) {
   const summary = describeRoute(route.edges, profile);
   const fullyVerified = summary.verifiedShare >= 1;
@@ -353,7 +372,7 @@ function RouteResult({
   return (
     <>
       <div className="map-preview">
-        <CampusMap route={route} profile={profile} />
+        <CampusMap route={route} profile={profile} here={here} />
       </div>
       <div className="result-box">
         <h2 className="result-title">Route found</h2>
@@ -403,6 +422,13 @@ function RouteResult({
           </>
         )}
       </div>
+
+      <GuidancePanel
+        route={route}
+        profile={profile}
+        destinationName={toName}
+        onPosition={onPosition}
+      />
     </>
   );
 }

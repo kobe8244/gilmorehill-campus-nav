@@ -105,7 +105,12 @@ on site is the first fieldwork task.
 - Unsurveyed stretches drawn **dashed** and reported as unverified — the app
   never claims a path is accessible when nobody has checked
 - Honest failure: when no step-free route exists it says so, and explains why
+- **Turn-by-turn guidance** with live positioning: each instruction carries what
+  the survey found on the stretch ahead — "twenty steps, with a handrail", "a
+  slope of 7 percent", "a place to rest" — spoken as it approaches
 - **Voice guidance** (Web Speech API), with `aria-live` results for screen readers
+- **Working settings**, persisted: high contrast, speech on or off, spoken
+  turns, and the traveller profile to start on
 - Large touch targets and high-contrast colours (WCAG 2.1 AA, BS 8300:2018)
 
 ## Tech Stack

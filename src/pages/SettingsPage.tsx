@@ -1,20 +1,37 @@
-import { useState } from "react";
+import { useSettings } from "../settings/SettingsContext";
 import { useTTS } from "../hooks/useTTS";
+import { PROFILE_LIST, profileLabel, type RouteProfile } from "../navigation/accessibility";
+import { generatedAt, attribution, surveyProgress } from "../data/campusGraph";
 
 interface ToggleRowProps {
   label: string;
+  hint: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
+  disabled?: boolean;
 }
 
-function ToggleRow({ label, checked, onChange }: ToggleRowProps) {
+function ToggleRow({ label, hint, checked, onChange, disabled }: ToggleRowProps) {
   return (
     <div className="setting-row">
-      <span className="setting-label">{label}</span>
+      <span className="setting-label">
+        {label}
+        <span
+          style={{
+            display: "block",
+            fontWeight: 400,
+            fontSize: 15,
+            color: "var(--color-text-secondary)",
+          }}
+        >
+          {hint}
+        </span>
+      </span>
       <input
         className="switch"
         type="checkbox"
         checked={checked}
+        disabled={disabled}
         onChange={(e) => onChange(e.target.checked)}
         aria-label={label}
       />
@@ -23,52 +40,59 @@ function ToggleRow({ label, checked, onChange }: ToggleRowProps) {
 }
 
 export default function SettingsPage() {
-  const [highContrast, setHighContrast] = useState(false);
-  const [voiceGuidance, setVoiceGuidance] = useState(true);
-  const [wheelchairRoutes, setWheelchairRoutes] = useState(false);
+  const settings = useSettings();
   const { speak, supported } = useTTS();
+  const progress = surveyProgress();
 
   return (
     <div className="page">
       <h1 className="page-header">Settings</h1>
       <div className="page-body">
         <ToggleRow
-          label="High Contrast Mode"
-          checked={highContrast}
-          onChange={setHighContrast}
+          label="High contrast"
+          hint="Stronger colours and heavier focus outlines."
+          checked={settings.highContrast}
+          onChange={(v) => settings.set("highContrast", v)}
         />
         <ToggleRow
-          label="Voice Guidance"
-          checked={voiceGuidance}
-          onChange={setVoiceGuidance}
+          label="Voice guidance"
+          hint={supported ? "Speak routes and directions aloud." : "This browser has no speech support."}
+          checked={settings.voiceGuidance}
+          disabled={!supported}
+          onChange={(v) => {
+            settings.set("voiceGuidance", v);
+            if (v) speak("Voice guidance is on.");
+          }}
         />
         <ToggleRow
-          label="Wheelchair-Accessible Routes Only"
-          checked={wheelchairRoutes}
-          onChange={setWheelchairRoutes}
+          label="Speak each turn"
+          hint="While following a route, announce turns as they approach."
+          checked={settings.spokenTurns}
+          disabled={!supported || !settings.voiceGuidance}
+          onChange={(v) => settings.set("spokenTurns", v)}
         />
 
-        <button
-          className="btn"
-          type="button"
-          disabled={!supported}
-          onClick={() =>
-            speak(
-              "Voice guidance is working. Head north towards the Main Building."
-            )
-          }
+        <label htmlFor="default-profile">Plan routes for, by default</label>
+        <select
+          id="default-profile"
+          value={settings.defaultProfile}
+          onChange={(e) => settings.set("defaultProfile", e.target.value as RouteProfile)}
         >
-          Test Voice Guidance
-        </button>
-        {!supported && (
-          <p className="error-text">
-            Voice guidance is not supported in this browser.
-          </p>
-        )}
+          {PROFILE_LIST.map((p) => (
+            <option key={p.id} value={p.id}>
+              {p.label}
+            </option>
+          ))}
+          <option value="shortest">{profileLabel("shortest")}</option>
+        </select>
 
         <div className="app-info">
-          <p>Gilmorehill Campus Navigation v1.0.0</p>
-          <p>ENG5059P MSc Project — University of Glasgow</p>
+          <p>
+            Survey coverage: {Math.round(progress.share * 100)}% of{" "}
+            {(progress.totalM / 1000).toFixed(2)} km measured on site.
+          </p>
+          <p>Network generated {new Date(generatedAt).toLocaleDateString("en-GB")}.</p>
+          <p style={{ fontSize: 14 }}>{attribution}</p>
         </div>
       </div>
     </div>

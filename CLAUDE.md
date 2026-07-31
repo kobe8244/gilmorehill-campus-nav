@@ -26,6 +26,7 @@ hand-edit the generated data.
 - A* pathfinding with an admissible straight-line heuristic
 - GeoJSON/OSM path network + field-surveyed accessibility attributes
 - Voice guidance via the Web Speech API (window.speechSynthesis)
+- Live positioning via the Geolocation API (needs HTTPS — hence Pages)
 - Node + Overpass API scripts for the survey pipeline
 
 Note: originally scaffolded as a React Native + Expo mobile app; pivoted
@@ -110,7 +111,9 @@ survey/            # the field kit + generated GeoJSON (see survey/README.md)
 src/
   pages/           # MapPage, RoutePlannerPage, SettingsPage
   components/      # Reusable UI (TabBar, CampusMap)
-  navigation/      # pathfinding.ts (A*), accessibility.ts (thresholds/cost)
+  navigation/      # pathfinding.ts (A*), accessibility.ts (thresholds/cost),
+                   # guidance.ts (turn-by-turn from route geometry + survey)
+  settings/        # SettingsContext.tsx — persisted user preferences
   data/            # campusGraph.ts + generated campusNetwork.json
   hooks/           # useTTS (Web Speech API) and other hooks
   constants/       # theme (high-contrast colours, sizes)

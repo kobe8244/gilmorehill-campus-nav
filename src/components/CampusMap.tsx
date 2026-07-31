@@ -22,6 +22,8 @@ interface CampusMapProps {
   route?: Route | null;
   /** Who the route was planned for — decides how entrances are marked. */
   profile?: RouteProfile;
+  /** Live position of the traveller, when they have asked to be followed. */
+  here?: { lat: number; lng: number; accuracyM: number } | null;
   /** Draw the surveyed network faintly behind the route. */
   showNetwork?: boolean;
 }
@@ -29,11 +31,13 @@ interface CampusMapProps {
 export default function CampusMap({
   route = null,
   profile = "wheelchair",
+  here = null,
   showNetwork = true,
 }: CampusMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<L.Map | null>(null);
   const routeLayerRef = useRef<L.LayerGroup | null>(null);
+  const meLayerRef = useRef<L.LayerGroup | null>(null);
 
   // Create the map once. Leaflet is imperative, so it is held in a ref and
   // torn down explicitly — StrictMode mounts twice in development and would
@@ -77,13 +81,43 @@ export default function CampusMap({
     }
 
     routeLayerRef.current = L.layerGroup().addTo(map);
+    meLayerRef.current = L.layerGroup().addTo(map);
 
     return () => {
       map.remove();
       mapRef.current = null;
       routeLayerRef.current = null;
+      meLayerRef.current = null;
     };
   }, [showNetwork]);
+
+  // The traveller's own position, with the accuracy the browser reports drawn
+  // around it. Showing the circle matters here: GPS between the tall
+  // sandstone buildings on this campus drifts by tens of metres, and a bare
+  // dot would invite more confidence than it deserves.
+  useEffect(() => {
+    const layer = meLayerRef.current;
+    if (!layer) return;
+    layer.clearLayers();
+    if (!here) return;
+
+    L.circle([here.lat, here.lng], {
+      radius: Math.max(here.accuracyM, 5),
+      color: Colors.primaryLight,
+      weight: 1,
+      fillOpacity: 0.12,
+      interactive: false,
+    }).addTo(layer);
+    L.circleMarker([here.lat, here.lng], {
+      radius: 8,
+      color: "#fff",
+      weight: 3,
+      fillColor: Colors.primary,
+      fillOpacity: 1,
+    })
+      .bindPopup(`You are here, to within about ${Math.round(here.accuracyM)} m`)
+      .addTo(layer);
+  }, [here]);
 
   // Redraw the route whenever it changes.
   useEffect(() => {
