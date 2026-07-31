@@ -461,15 +461,25 @@ const priorSegs = loadExisting("segments.csv", "segment_id");
 const priorEnts = loadExisting("entrances.csv", "entrance_id");
 
 // Index prior rows by the ground they describe rather than by their row
-// number. A segment can also come back from OSM with its direction reversed,
-// so the endpoint pair is sorted before being used as a key.
-const osmKey = (way, a, b) =>
-  way && a && b ? `${way}|${[String(a), String(b)].sort().join("|")}` : null;
+// number. A segment can come back from OSM with its direction reversed, so
+// the endpoint pair is sorted before use.
+//
+// The way and endpoints alone are NOT unique: where a way loops, two arcs
+// join the same pair of junctions, and a key built from those three fields
+// alone matches both. That happened here — a 16 m and a 99 m branch of the
+// same loop collided, and one arc's measurements were copied onto the other,
+// which had deliberately been left unsurveyed. Length separates them.
+const osmKey = (way, a, b, len) =>
+  way && a && b ? `${way}|${[String(a), String(b)].sort().join("|")}|${len ?? ""}` : null;
 
+// Values are arrays: a collision must be detected, never silently resolved.
 const priorByOsm = new Map();
 for (const row of priorSegs.values()) {
-  const key = osmKey(row.osm_way, row.osm_from, row.osm_to);
-  if (key) priorByOsm.set(key, row);
+  const key = osmKey(row.osm_way, row.osm_from, row.osm_to, row.length_m);
+  if (!key) continue;
+  const list = priorByOsm.get(key);
+  if (list) list.push(row);
+  else priorByOsm.set(key, [row]);
 }
 
 // Whether the existing CSV carries durable identity at all. Files written
@@ -483,9 +493,22 @@ const priorHasOsmIds = [...priorSegs.values()].some((r) => (r.osm_way ?? "") !==
 // used to hold its number, and the router will then refuse a perfectly
 // ordinary footway.
 function priorFor(props) {
-  const key = osmKey(props.osm_way_id, props.osm_from_node, props.osm_to_node);
-  const durable = key ? priorByOsm.get(key) : null;
-  if (durable) return durable;
+  const key = osmKey(props.osm_way_id, props.osm_from_node, props.osm_to_node, props.length_m);
+  const candidates = (key && priorByOsm.get(key)) || [];
+  if (candidates.length === 1) return candidates[0];
+  if (candidates.length > 1) {
+    // Still ambiguous. Only the row number can separate them now, and if it
+    // does not match any candidate, refuse rather than guess — attaching one
+    // stretch of ground's measurements to another is worse than losing them.
+    const exact = candidates.find((r) => r.segment_id === props.segment_id);
+    if (!exact) {
+      console.warn(
+        `  WARNING: ${props.segment_id} matches ${candidates.length} prior rows ` +
+          `(${candidates.map((r) => r.segment_id).join(", ")}) and none by id — not merged.`
+      );
+    }
+    return exact ?? null;
+  }
   if (priorHasOsmIds) return null; // the file has keys; absence means genuinely new
 
   const byId = priorSegs.get(props.segment_id);

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-31T22:57:54.412Z",
+  "generated": "2026-07-31T23:08:23.094Z",
   "attribution": "Base path geometry © OpenStreetMap contributors, ODbL. Accessibility attributes surveyed on site.",
   "destinations": [
     {
@@ -1360,7 +1360,7 @@
         "stepCount": 0,
         "ramp": true,
         "handrail": false,
-        "gradientPct": 9,
+        "gradientPct": 7,
         "surface": "asphalt",
         "surfaceCondition": "good",
         "widthM": 3,
@@ -2996,18 +2996,18 @@
         ]
       ],
       "survey": {
-        "stepFree": true,
-        "stepCount": 0,
-        "ramp": true,
-        "handrail": false,
-        "gradientPct": 1,
-        "surface": "paving_stones",
-        "surfaceCondition": "good",
-        "widthM": 4,
-        "droppedKerb": "none",
-        "tactilePaving": false,
-        "lit": true,
-        "seatingNearby": false
+        "stepFree": null,
+        "stepCount": null,
+        "ramp": null,
+        "handrail": null,
+        "gradientPct": null,
+        "surface": null,
+        "surfaceCondition": null,
+        "widthM": null,
+        "droppedKerb": null,
+        "tactilePaving": null,
+        "lit": null,
+        "seatingNearby": null
       }
     },
     {
