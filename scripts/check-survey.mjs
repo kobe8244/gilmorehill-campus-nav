@@ -182,8 +182,16 @@ function checkSegments() {
         "OSM calls this steps but you recorded step-free — please say why in notes (a parallel ramp?)"
       );
     }
-    if (row.step_count && Number(row.step_count) > 0 && row.step_free === "yes" && !row.ramp) {
-      problem(errors, file, id, "step_free", `${row.step_count} steps recorded but marked step-free`);
+    // Steps and "step free" contradict each other unless a ramp provides the
+    // step-free alternative. Testing `!row.ramp` instead of comparing it to
+    // "yes" meant the rule only fired when the ramp column was left blank —
+    // so an explicit `ramp=no` beside a flight of steps sailed through, which
+    // is precisely the case that needs catching.
+    if (row.step_count && Number(row.step_count) > 0 && row.step_free === "yes" && row.ramp !== "yes") {
+      problem(
+        errors, file, id, "step_free",
+        `${row.step_count} steps recorded and no ramp, but marked step-free`
+      );
     }
 
     // Matches the app's own definition of "surveyed" in campusGraph.ts:
