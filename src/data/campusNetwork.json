@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27T05:57:11.633Z",
+  "generated": "2026-07-31T22:57:54.412Z",
   "attribution": "Base path geometry © OpenStreetMap contributors, ODbL. Accessibility attributes surveyed on site.",
   "destinations": [
     {
@@ -45,13 +45,13 @@
       "nodeId": "n236",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 2,
+        "indoorHandoverId": "MB-E14",
         "notes": null
       }
     },
@@ -64,13 +64,13 @@
       "nodeId": "n339",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": false,
+        "doorType": "manual",
+        "stepFree": false,
+        "stepCount": 20,
+        "ramp": false,
+        "doorWidthM": 1,
+        "indoorHandoverId": "MB-E9",
         "notes": null
       }
     },
@@ -83,13 +83,13 @@
       "nodeId": "n190",
       "osmHint": "entrance=yes; level=0",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 2,
+        "indoorHandoverId": "MB-E2",
         "notes": null
       }
     },
@@ -102,13 +102,13 @@
       "nodeId": "n339",
       "osmHint": "entrance=yes; level=0",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 2,
+        "indoorHandoverId": "MB-E7",
         "notes": null
       }
     },
@@ -121,13 +121,13 @@
       "nodeId": "n28",
       "osmHint": "entrance=yes",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 1.5,
+        "indoorHandoverId": "MB-E15",
         "notes": null
       }
     },
@@ -140,13 +140,13 @@
       "nodeId": "n346",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": false,
+        "doorType": "manual",
+        "stepFree": false,
+        "stepCount": 3,
+        "ramp": false,
+        "doorWidthM": 2,
+        "indoorHandoverId": "MB-E13",
         "notes": null
       }
     },
@@ -159,13 +159,13 @@
       "nodeId": "n231",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 2,
+        "indoorHandoverId": "MB-E11",
         "notes": null
       }
     },
@@ -178,13 +178,13 @@
       "nodeId": "n42",
       "osmHint": "entrance=yes",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "manual",
+        "stepFree": true,
+        "stepCount": 10,
+        "ramp": true,
+        "doorWidthM": 1.5,
+        "indoorHandoverId": "MB-E18",
         "notes": null
       }
     },
@@ -197,13 +197,13 @@
       "nodeId": "n43",
       "osmHint": "entrance=yes",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 1.5,
+        "indoorHandoverId": "MB-E17",
         "notes": null
       }
     },
@@ -216,13 +216,13 @@
       "nodeId": "n339",
       "osmHint": "entrance=yes; level=0; note=Entrace is simplified, it is actually tucked under the staircase.",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": false,
+        "doorType": "manual",
+        "stepFree": false,
+        "stepCount": 20,
+        "ramp": false,
+        "doorWidthM": 1,
+        "indoorHandoverId": "MB-E8",
         "notes": null
       }
     },
@@ -235,13 +235,13 @@
       "nodeId": "n337",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": false,
+        "doorType": "heavy",
+        "stepFree": false,
+        "stepCount": 15,
+        "ramp": true,
+        "doorWidthM": 1,
+        "indoorHandoverId": "MB-E10",
         "notes": null
       }
     },
@@ -254,13 +254,13 @@
       "nodeId": "n110",
       "osmHint": "entrance=yes; level=0",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 2,
+        "indoorHandoverId": "MB-E1",
         "notes": null
       }
     },
@@ -273,13 +273,13 @@
       "nodeId": "n43",
       "osmHint": "entrance=yes",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 1.5,
+        "indoorHandoverId": "MB-E19",
         "notes": null
       }
     },
@@ -292,13 +292,13 @@
       "nodeId": "n107",
       "osmHint": "entrance=yes",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 1.5,
+        "indoorHandoverId": "MB-E20",
         "notes": null
       }
     },
@@ -311,13 +311,13 @@
       "nodeId": "n339",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 1.5,
+        "indoorHandoverId": "MB-E16",
         "notes": null
       }
     },
@@ -330,13 +330,13 @@
       "nodeId": "n349",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 1.5,
+        "indoorHandoverId": "MB-E5",
         "notes": null
       }
     },
@@ -349,13 +349,13 @@
       "nodeId": "n345",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 1.5,
+        "indoorHandoverId": "MB-E6",
         "notes": null
       }
     },
@@ -368,13 +368,13 @@
       "nodeId": "n337",
       "osmHint": "entrance=yes; level=1",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "doorWidthM": 2,
+        "indoorHandoverId": "MB-E12",
         "notes": null
       }
     },
@@ -387,14 +387,14 @@
       "nodeId": "n347",
       "osmHint": "access=yes; entrance=yes; level=1; wheelchair=no",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
-        "notes": null
+        "accessible": true,
+        "doorType": "automatic",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": false,
+        "doorWidthM": 1,
+        "indoorHandoverId": "MB-E4",
+        "notes": "Confirmed usable on site; lift to level 2 (OSM wheelchair=no is wrong)"
       }
     },
     {
@@ -406,14 +406,14 @@
       "nodeId": "n350",
       "osmHint": "access=yes; entrance=yes; level=1; wheelchair=no",
       "survey": {
-        "accessible": null,
-        "doorType": null,
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "doorWidthM": null,
-        "indoorHandoverId": null,
-        "notes": null
+        "accessible": true,
+        "doorType": "manual",
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": false,
+        "doorWidthM": 1,
+        "indoorHandoverId": "MB-E3",
+        "notes": "Confirmed usable on site; lift to level 2 (OSM wheelchair=no is wrong)"
       }
     }
   ],
@@ -761,17 +761,17 @@
       ],
       "survey": {
         "stepFree": false,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepCount": 10,
+        "ramp": false,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 1.5,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -792,18 +792,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -824,18 +824,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -864,18 +864,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -900,18 +900,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": true,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 6,
+        "droppedKerb": "lowered",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -932,18 +932,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": true,
+        "gradientPct": 5,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 4,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -964,18 +964,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 6,
+        "surface": "asphalt",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "lowered",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1020,18 +1020,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": true,
+        "gradientPct": 7,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 2.5,
+        "droppedKerb": "flush",
+        "tactilePaving": true,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -1080,18 +1080,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1112,18 +1112,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1148,18 +1148,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -1208,18 +1208,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 6,
+        "surface": "asphalt",
+        "surfaceCondition": "uneven",
+        "widthM": 7,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -1252,7 +1252,7 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
+        "stepFree": false,
         "stepCount": null,
         "ramp": null,
         "handrail": null,
@@ -1284,7 +1284,7 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
+        "stepFree": false,
         "stepCount": null,
         "ramp": null,
         "handrail": null,
@@ -1320,18 +1320,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -1356,18 +1356,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 9,
+        "surface": "asphalt",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1396,18 +1396,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": true,
+        "gradientPct": 7,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -1432,18 +1432,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 4,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -1468,18 +1468,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 1,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "asphalt",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "lowered",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -1532,18 +1532,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "asphalt",
+        "surfaceCondition": "good",
+        "widthM": 4,
+        "droppedKerb": "lowered",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": true
       }
     },
     {
@@ -1564,18 +1564,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1604,18 +1604,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "lowered",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1636,18 +1636,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1669,17 +1669,17 @@
       ],
       "survey": {
         "stepFree": false,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepCount": 20,
+        "ramp": false,
+        "handrail": true,
+        "gradientPct": 7,
+        "surface": "asphalt",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "raised",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1700,18 +1700,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 1,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 5,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1732,18 +1732,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 1,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 4,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": true
       }
     },
     {
@@ -1788,18 +1788,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "paving_stones",
+        "surfaceCondition": "uneven",
+        "widthM": 0.5,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1824,7 +1824,7 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
+        "stepFree": false,
         "stepCount": null,
         "ramp": null,
         "handrail": null,
@@ -1860,18 +1860,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1892,18 +1892,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 3,
+        "surface": "asphalt",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1932,18 +1932,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "lowered",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -1964,18 +1964,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -2032,18 +2032,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "asphalt",
+        "surfaceCondition": "good",
+        "widthM": 4,
+        "droppedKerb": "lowered",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -2064,18 +2064,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -2224,18 +2224,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": false,
+        "stepCount": 7,
+        "ramp": false,
+        "handrail": true,
+        "gradientPct": 6,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -2264,18 +2264,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 3,
+        "ramp": true,
+        "handrail": true,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -2296,18 +2296,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 5,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -2328,18 +2328,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -2360,7 +2360,7 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
+        "stepFree": false,
         "stepCount": null,
         "ramp": null,
         "handrail": null,
@@ -2492,18 +2492,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 1.5,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -2552,7 +2552,7 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
+        "stepFree": false,
         "stepCount": null,
         "ramp": null,
         "handrail": null,
@@ -2612,7 +2612,7 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
+        "stepFree": false,
         "stepCount": null,
         "ramp": null,
         "handrail": null,
@@ -2664,7 +2664,7 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
+        "stepFree": false,
         "stepCount": null,
         "ramp": null,
         "handrail": null,
@@ -2700,18 +2700,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": true,
+        "gradientPct": 6,
+        "surface": "asphalt",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "lowered",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -2732,18 +2732,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 5,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -2764,18 +2764,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -2796,18 +2796,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "uneven",
+        "widthM": 2,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -2828,18 +2828,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": true,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -2860,18 +2860,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 4,
+        "droppedKerb": "flush",
+        "tactilePaving": true,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -2892,18 +2892,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -2928,18 +2928,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": true,
+        "gradientPct": 3,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": true
       }
     },
     {
@@ -2996,18 +2996,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 1,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 4,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -3232,18 +3232,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 1,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 4,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -3264,18 +3264,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 2,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -3337,17 +3337,17 @@
       ],
       "survey": {
         "stepFree": false,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepCount": 25,
+        "ramp": false,
+        "handrail": true,
+        "gradientPct": 10,
+        "surface": "concrete",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "raised",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -3376,18 +3376,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -3416,18 +3416,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 5,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 3,
+        "droppedKerb": "flush",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -3457,17 +3457,17 @@
       ],
       "survey": {
         "stepFree": false,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepCount": 25,
+        "ramp": false,
+        "handrail": true,
+        "gradientPct": 10,
+        "surface": "concrete",
+        "surfaceCondition": "good",
+        "widthM": 2,
+        "droppedKerb": "raised",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -3524,7 +3524,7 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
+        "stepFree": false,
         "stepCount": null,
         "ramp": null,
         "handrail": null,
@@ -3564,18 +3564,18 @@
         ]
       ],
       "survey": {
-        "stepFree": null,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepFree": true,
+        "stepCount": 0,
+        "ramp": true,
+        "handrail": false,
+        "gradientPct": 4,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 1.5,
+        "droppedKerb": "none",
+        "tactilePaving": false,
+        "lit": false,
+        "seatingNearby": false
       }
     },
     {
@@ -3597,17 +3597,17 @@
       ],
       "survey": {
         "stepFree": false,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepCount": 5,
+        "ramp": false,
+        "handrail": true,
+        "gradientPct": 8,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 1.5,
+        "droppedKerb": "raised",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     },
     {
@@ -3629,17 +3629,17 @@
       ],
       "survey": {
         "stepFree": false,
-        "stepCount": null,
-        "ramp": null,
-        "handrail": null,
-        "gradientPct": null,
-        "surface": null,
-        "surfaceCondition": null,
-        "widthM": null,
-        "droppedKerb": null,
-        "tactilePaving": null,
-        "lit": null,
-        "seatingNearby": null
+        "stepCount": 20,
+        "ramp": false,
+        "handrail": true,
+        "gradientPct": 9,
+        "surface": "paving_stones",
+        "surfaceCondition": "good",
+        "widthM": 1.5,
+        "droppedKerb": "raised",
+        "tactilePaving": false,
+        "lit": true,
+        "seatingNearby": false
       }
     }
   ]

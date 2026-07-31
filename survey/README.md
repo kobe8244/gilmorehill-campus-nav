@@ -139,7 +139,7 @@ Then, in the field:
 | `surface` | Material | `asphalt` / `paving_stones` / `concrete` / `gravel` / `grass` / `cobbles` / `other` |
 | `surface_condition` | Condition | `good` / `uneven` / `poor` |
 | `width_m` | Narrowest clear width | number, e.g. `1.8` |
-| `dropped_kerb` | Kerb at crossing ends | `lowered` / `flush` / `raised` / `none` |
+| `dropped_kerb` | Kerb where the path meets a road | `flush` (level with the road) / `lowered` (dropped, slight lip) / `raised` (**full kerb, nowhere to cross**) / `none` (**no kerb here at all**) |
 | `tactile_paving` | Tactile paving present? | `yes` / `no` |
 | `lit` | Street lighting? | `yes` / `no` |
 | `seating_nearby` | Bench or rest point nearby? | `yes` / `no` |
@@ -167,6 +167,12 @@ optional extras; leaving one blank removes a traveller's route from the app.
 
 Measure `width_m` at the **narrowest** point, not the average: a 2 m path
 with one 0.8 m pinch point is a 0.8 m path to a wheelchair user.
+
+`dropped_kerb` is the one column where two of the values look alike but mean
+opposite things. **`raised` is a barrier** — a full kerb with nowhere to get
+down. **`none` is not** — it means the path never meets a kerb, which is the
+easiest case there is. Only use `raised` when someone on wheels would
+actually be stopped.
 
 ### entrances.csv (indoor handover points)
 

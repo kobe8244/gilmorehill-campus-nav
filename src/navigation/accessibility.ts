@@ -346,7 +346,11 @@ export function assess(edge: GraphEdge, profile: RouteProfile = "wheelchair"): A
   else if (s.surfaceCondition === "uneven") warnings.push("uneven surface");
   if (s.surface && DIFFICULT_SURFACES.includes(s.surface)) warnings.push(`${s.surface} surface`);
 
-  if (s.droppedKerb === "raised" || s.droppedKerb === "none") {
+  // Only `raised` is a barrier: a full kerb with no dropped section to cross
+  // at. `none` means there is no kerb here at all — the absence of an
+  // obstacle, not the presence of one — and `flush` and `lowered` are both
+  // dropped kerbs, which is what §4.11 asks for.
+  if (s.droppedKerb === "raised") {
     if (rules.raisedKerbBlocks) blockers.push("raised kerb with no dropped crossing");
     else warnings.push("raised kerb");
   }
@@ -397,7 +401,7 @@ export function edgeCost(edge: GraphEdge, profile: RouteProfile): number | null 
   if (s.tactilePaving === false) cost *= p.noTactilePaving;
   if (s.lit === false) cost *= p.unlit;
   if (s.seatingNearby === false) cost *= p.noSeating;
-  if (s.droppedKerb === "raised" || s.droppedKerb === "none") cost *= p.awkwardKerb;
+  if (s.droppedKerb === "raised") cost *= p.awkwardKerb;
 
   return cost;
 }
