@@ -19,7 +19,7 @@ downloaded for the study area, before any fieldwork.
 
 | OSM tag | Segments tagged | Coverage |
 | ------- | --------------: | -------: |
-| `surface` | 364 / 500 | 73% |
+| `surface` | 369 / 500 | 74% |
 | `lit` | 114 / 500 | 23% |
 | `handrail` | 74 / 500 | 15% |
 | `incline` | 72 / 500 | 14% |

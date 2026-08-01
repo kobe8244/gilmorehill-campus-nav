@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "properties": {
     "source": "OpenStreetMap (Overpass API), ODbL",
-    "generated": "2026-07-25T22:25:27.096Z",
+    "generated": "2026-07-31T23:54:53.161Z",
     "bbox": {
       "south": 55.869105839885016,
       "north": 55.875512560114984,
@@ -7776,7 +7776,7 @@
         "osm_way_id": 439811084,
         "osm_from_node": 5179610553,
         "osm_to_node": 4374873307,
-        "osm_hint": ""
+        "osm_hint": "surface=asphalt"
       }
     },
     {
@@ -7804,7 +7804,7 @@
         "osm_way_id": 439811084,
         "osm_from_node": 4374873307,
         "osm_to_node": 4374873303,
-        "osm_hint": ""
+        "osm_hint": "surface=asphalt"
       }
     },
     {
@@ -12384,7 +12384,7 @@
         "osm_way_id": 1287233412,
         "osm_from_node": 11938383697,
         "osm_to_node": 5179610553,
-        "osm_hint": ""
+        "osm_hint": "surface=paving_stones"
       }
     },
     {
@@ -12908,7 +12908,7 @@
         "osm_way_id": 1287233422,
         "osm_from_node": 5179610537,
         "osm_to_node": 11938383695,
-        "osm_hint": ""
+        "osm_hint": "surface=paving_stones"
       }
     },
     {
@@ -12936,7 +12936,7 @@
         "osm_way_id": 1287233423,
         "osm_from_node": 5179610537,
         "osm_to_node": 4374873299,
-        "osm_hint": ""
+        "osm_hint": "surface=asphalt"
       }
     },
     {

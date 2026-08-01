@@ -1,10 +1,10 @@
 # OSM accessibility-attribute coverage — Gilmorehill study area
 
-Generated 2026-07-25 from 500 path segments (15.64 km) across the four-destination study area.
+Generated 2026-07-31 from 500 path segments (15.64 km) across the four-destination study area.
 
 | OSM tag | Segments tagged | Coverage |
 | ------- | --------------: | -------: |
-| `surface` | 364 / 500 | 73% |
+| `surface` | 369 / 500 | 74% |
 | `lit` | 114 / 500 | 23% |
 | `handrail` | 74 / 500 | 15% |
 | `incline` | 72 / 500 | 14% |
