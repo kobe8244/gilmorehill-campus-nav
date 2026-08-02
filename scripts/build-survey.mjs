@@ -37,13 +37,15 @@ const APP_DATA = join(__dirname, "..", "src", "data", "campusNetwork.json");
 // one — a flight of stairs is short, its ramp detour is not. Surveying a
 // corridor rather than a line is what makes an accessible alternative
 // findable at all.
-const ALT_BUFFER_M = 45;
+// Overridable so the choice can be tested rather than asserted; see the
+// sensitivity analysis in scripts/sensitivity.mjs.
+const ALT_BUFFER_M = Number(process.env.ALT_BUFFER_M ?? 45);
 
 // Everything within this radius of a destination is surveyed regardless of
 // whether a route passes through it. Accessible entrances and their ramps
 // live in the last few metres of a journey, and a corridor drawn around the
 // shortest route routinely misses the door you actually need.
-const DEST_RADIUS_M = 70;
+const DEST_RADIUS_M = Number(process.env.DEST_RADIUS_M ?? 70);
 
 // --- Load stage 1 output ---------------------------------------------
 

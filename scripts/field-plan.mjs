@@ -2,11 +2,11 @@
 
 // Stage 3 of the survey pipeline — the walking plan.
 //
-// Turns the 60 segments chosen by build-survey.mjs into an ordered itinerary
+// Turns the segments chosen by build-survey.mjs into an ordered itinerary
 // you can actually follow on foot, split into sessions, with the transit
 // walks between disconnected pieces made explicit.
 //
-// The survey network is not an Eulerian graph (it has 22 dead ends), so some
+// The survey network is not an Eulerian graph — it has dead ends — so some
 // retracing is unavoidable. This picks an order that keeps it small rather
 // than pretending it is zero.
 //
@@ -108,7 +108,7 @@ function whereIs(seg) {
 // Greedy route inspection: keep walking unsurveyed segments while any is
 // adjacent; when stuck, take the shortest walk to the nearest unsurveyed one
 // and record that as a transit rather than hiding it.
-function planWalk(segmentIds, startNode) {
+export function planWalk(segmentIds, startNode) {
   const todo = new Set(segmentIds);
   const legs = [];
   let current = startNode;
