@@ -158,9 +158,8 @@ function layersFor(a, b) {
   const plain = dijkstra(a.nodeId);
   const shortest = new Set(pathSegs(plain, a.nodeId, b.nodeId));
   const free = dijkstra(a.nodeId, true);
-  const stepFree = isFinite(free.dist.get(b.nodeId) ?? Infinity)
-    ? new Set(pathSegs(free, a.nodeId, b.nodeId))
-    : new Set();
+  const stepFreeExists = isFinite(free.dist.get(b.nodeId) ?? Infinity);
+  const stepFree = stepFreeExists ? new Set(pathSegs(free, a.nodeId, b.nodeId)) : new Set();
 
   // Corridor around those routes.
   const coreGeom = [...new Set([...shortest, ...stepFree])].map(
@@ -206,26 +205,52 @@ function layersFor(a, b) {
       .map((s) => s.id)
   );
 
-  return { shortest, stepFree, corridor, radius, link };
+  return { shortest, stepFree, stepFreeExists, corridor, radius, link };
 }
 
-let best = null;
+// Which journey Figure 4.2 illustrates. Override with, for example:
+//   FIGURE_JOURNEY=hunterian_museum:james_watt_south node scripts/export-figures.mjs
+//
+// The default is a journey involving the Hunterian Museum. Those are the ones
+// where no step-free path exists at all, so the figure shows the method
+// working on the case the project actually turns on, rather than on a journey
+// where the step-free layer merely duplicates the shortest path.
+const WANTED = (process.env.FIGURE_JOURNEY ?? "hunterian_museum:james_watt_south")
+  .split(":")
+  .filter(Boolean);
+
+const candidates = [];
 for (let i = 0; i < dests.length; i++) {
   for (let j = i + 1; j < dests.length; j++) {
     const L = layersFor(dests[i], dests[j]);
-    // Prefer a journey where every layer actually contributes something.
-    const score =
-      (L.shortest.size ? 1 : 0) +
-      (L.stepFree.size ? 1 : 0) +
-      (L.corridor.size ? 1 : 0) +
-      (L.radius.size ? 1 : 0) +
-      (L.link.size ? 1 : 0);
-    const total = L.shortest.size + L.corridor.size + L.radius.size + L.link.size;
-    if (!best || score > best.score || (score === best.score && total > best.total)) {
-      best = { score, total, a: dests[i], b: dests[j], L };
-    }
+    candidates.push({
+      a: dests[i],
+      b: dests[j],
+      L,
+      total: L.shortest.size + L.corridor.size + L.radius.size + L.link.size,
+    });
   }
 }
+
+console.log("\nLayer contributions for every journey:");
+for (const c of candidates) {
+  console.log(
+    `  ${(c.a.id + " → " + c.b.id).padEnd(46)}` +
+      ` shortest ${String(c.L.shortest.size).padStart(2)}` +
+      `  step-free ${c.L.stepFree.size ? String(c.L.stepFree.size).padStart(2) : " –"}` +
+      `  corridor ${String(c.L.corridor.size).padStart(2)}` +
+      `  radius ${String(c.L.radius.size).padStart(2)}` +
+      `  link ${String(c.L.link.size).padStart(2)}`
+  );
+}
+
+const wanted = candidates.find(
+  (c) =>
+    (WANTED.includes(c.a.id) && WANTED.includes(c.b.id)) ||
+    (WANTED.length === 1 && (c.a.id === WANTED[0] || c.b.id === WANTED[0]))
+);
+const best = wanted ?? candidates.reduce((x, y) => (y.total > x.total ? y : x));
+if (!wanted) console.warn(`\n  FIGURE_JOURNEY did not match; using the richest journey instead.`);
 
 const only = (set, ...minus) => [...set].filter((id) => !minus.some((m) => m.has(id)));
 
@@ -236,7 +261,17 @@ const selection = {
   toAt: best.b.at,
   layers: [
     { key: "shortest", label: "Shortest path", ids: [...best.L.shortest] },
-    { key: "stepFree", label: "Step-free path", ids: only(best.L.stepFree, best.L.shortest) },
+    {
+      key: "stepFree",
+      // Two quite different reasons for an empty layer, and the figure has to
+      // say which: no step-free route exists at all, or one exists and runs
+      // along the same paths as the shortest.
+      label: best.L.stepFreeExists
+        ? "Step-free path"
+        : "Step-free path — none exists",
+      empty: best.L.stepFreeExists ? "identical to the shortest path here" : "no step-free route between these two",
+      ids: only(best.L.stepFree, best.L.shortest),
+    },
     { key: "corridor", label: `Corridor within ${ALT_BUFFER_M} m`, ids: [...best.L.corridor] },
     { key: "radius", label: `Within ${DEST_RADIUS_M} m of a destination`, ids: [...best.L.radius] },
     { key: "link", label: "Added to connect the network", ids: [...best.L.link] },

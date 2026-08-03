@@ -243,9 +243,12 @@ def fig_selection():
             ys_all += ys
             ax.plot(xs, ys, color=colour, lw=lw, ls=dash, zorder=5,
                     solid_capstyle="round")
+        # An empty layer still earns a legend entry, but it has to say which of
+        # the two quite different reasons applies.
         note = (f"{layer['label']} — {layer['count']} segments" if layer["count"]
-                else f"{layer['label']} — identical to the shortest path here")
-        handles.append(Line2D([], [], color=colour, lw=lw, ls=dash, label=note))
+                else f"{layer['label']} ({layer.get('empty', 'nothing added')})")
+        handles.append(Line2D([], [], color=colour, lw=lw, ls=dash,
+                              alpha=1.0 if layer["count"] else 0.35, label=note))
 
     for pt, name in ((sel["fromAt"], sel["from"]), (sel["toAt"], sel["to"])):
         ax.plot(*pt, marker="o", ms=5, mfc="white", mec="black", mew=1.1, zorder=7)
